@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Natural Herb Palette */
+  --color-background: hsl(40 20% 98%); /* Soft Cream */
+  --color-foreground: hsl(130 20% 15%); /* Dark Green/Black */
+  
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(130 20% 15%);
+  
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(130 20% 15%);
+  
+  --color-primary: hsl(130 35% 35%); /* Herbal Green */
+  --color-primary-foreground: hsl(0 0% 100%);
+  
+  --color-secondary: hsl(130 25% 90%); /* Light Sage */
+  --color-secondary-foreground: hsl(130 40% 25%);
+  
+  --color-muted: hsl(130 10% 94%);
+  --color-muted-foreground: hsl(130 10% 40%);
+  
+  --color-accent: hsl(35 60% 90%); /* Subtle Earthy Gold/Beige */
+  --color-accent-foreground: hsl(130 35% 35%);
+  
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(0 0% 98%);
+  
+  --color-border: hsl(130 15% 90%);
+  --color-input: hsl(130 15% 90%);
+  --color-ring: hsl(130 35% 35%);
+  
+  --font-sans: 'Noto Sans TC', sans-serif;
+  --font-serif: 'Noto Serif TC', serif;
+  
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground selection:bg-primary/20 selection:text-primary;
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-wide;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
