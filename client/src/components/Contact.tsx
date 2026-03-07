@@ -47,8 +47,8 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} 沐璿草本護髮 Mu Xuan Herbal Hair Care. All rights reserved.</p>
+        <div className="border-t-2 border-foreground/30 pt-8 text-center text-sm text-foreground/70">
+          <p>&copy; {new Date().getFullYear()} 沐璿草本護髮中心 Mu Xuan Herbal Hair Care. All rights reserved.</p>
         </div>
       </div>
     </footer>
