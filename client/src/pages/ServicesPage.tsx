@@ -18,6 +18,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import PageFooter from "@/components/PageFooter";
 
 import ingredientsImgPng from "@assets/generated_images/traditional_chinese_herbs_(ginseng,_angelica,_etc)_arranged_on_separate_small_plates.png";
 import ingredients320w from "@assets/generated_images/traditional_chinese_herbs_(ginseng,_angelica,_etc)_arranged_on_separate_small_plates-320w.webp";
@@ -303,6 +304,8 @@ export default function ServicesPage() {
           </motion.div>
         </div>
       </section>
+
+      <PageFooter />
     </div>
   );
 }

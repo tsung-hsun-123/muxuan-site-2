@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Clock, CalendarX, Navigation, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import PageFooter from "@/components/PageFooter";
 
 const locations = [
   {
@@ -261,6 +262,8 @@ export default function LocationsPage() {
           </motion.div>
         </div>
       </section>
+
+      <PageFooter />
     </div>
   );
 }
