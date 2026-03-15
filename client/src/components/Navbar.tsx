@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -9,9 +9,13 @@ const scrollNavItems = [
   { name: "首頁", id: "home" },
   { name: "適合對象", id: "audience" },
   { name: "品牌故事", id: "story" },
-  { name: "分店資訊", id: "locations" },
   { name: "常見問題", id: "faq" },
   { name: "聯絡我們", id: "contact" },
+];
+
+const pageNavItems = [
+  { name: "服務介紹", href: "/services" },
+  { name: "分店資訊", href: "/locations" },
 ];
 
 import logo from "@assets/Untitled_design__15_-removebg-preview_1764006141705.png";
@@ -21,13 +25,13 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [location] = useLocation();
 
-  const isServicesPage = location === "/services";
+  const isSubPage = location !== "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      if (isServicesPage) return;
+      if (isSubPage) return;
 
       for (const item of scrollNavItems) {
         const element = document.getElementById(item.id);
@@ -42,10 +46,10 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isServicesPage]);
+  }, [isSubPage]);
 
   const scrollToSection = (id: string) => {
-    if (isServicesPage) {
+    if (isSubPage) {
       window.location.href = `/#${id}`;
       return;
     }
@@ -60,12 +64,11 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 border-b bg-white/70 backdrop-blur-md border-border/20",
-        isScrolled
-          ? "py-2 shadow-sm border-border/40"
-          : "py-4"
+        isScrolled ? "py-2 shadow-sm border-border/40" : "py-4"
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+        {/* Logo */}
         <div
           className="cursor-pointer flex items-center gap-3"
           onClick={() => scrollToSection("home")}
@@ -76,13 +79,14 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-1 lg:gap-2">
+          {/* Scroll-to-section items (homepage anchors) */}
           {scrollNavItems.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={cn(
                 "px-3 py-2 text-sm font-medium rounded-md transition-colors",
-                !isServicesPage && activeSection === item.id
+                !isSubPage && activeSection === item.id
                   ? "text-primary bg-primary/10"
                   : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
               )}
@@ -91,20 +95,23 @@ export default function Navbar() {
             </button>
           ))}
 
-          {/* Services page link with underline on hover */}
-          <Link href="/services">
-            <span
-              className={cn(
-                "px-3 py-2 text-sm font-medium rounded-md transition-colors relative inline-block",
-                "after:absolute after:bottom-1 after:left-3 after:right-3 after:h-[2px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200 after:origin-left",
-                isServicesPage
-                  ? "text-primary bg-primary/10"
-                  : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
-              )}
-            >
-              服務介紹
-            </span>
-          </Link>
+          {/* Page-link items with hover underline */}
+          {pageNavItems.map((item) => (
+            <Link key={item.href} href={item.href}>
+              <span
+                className={cn(
+                  "px-3 py-2 text-sm font-medium rounded-md transition-colors relative inline-block cursor-pointer",
+                  "after:absolute after:bottom-1 after:left-3 after:right-3 after:h-[2px] after:bg-primary",
+                  "after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200 after:origin-left",
+                  location === item.href
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                )}
+              >
+                {item.name}
+              </span>
+            </Link>
+          ))}
 
           <Button
             variant="default"
@@ -135,16 +142,20 @@ export default function Navbar() {
                     {item.name}
                   </button>
                 ))}
-                <Link href="/services">
-                  <span
-                    className={cn(
-                      "block text-lg font-medium py-2 border-b border-border/50 transition-colors",
-                      isServicesPage ? "text-primary" : "hover:text-primary"
-                    )}
-                  >
-                    服務介紹
-                  </span>
-                </Link>
+
+                {pageNavItems.map((item) => (
+                  <Link key={item.href} href={item.href}>
+                    <span
+                      className={cn(
+                        "block text-lg font-medium py-2 border-b border-border/50 transition-colors cursor-pointer",
+                        location === item.href ? "text-primary" : "hover:text-primary"
+                      )}
+                    >
+                      {item.name}
+                    </span>
+                  </Link>
+                ))}
+
                 <Button
                   className="mt-4 w-full bg-primary hover:bg-primary/90"
                   onClick={() => scrollToSection("contact")}
