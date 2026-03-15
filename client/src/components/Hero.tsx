@@ -60,6 +60,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-md"
           >
+            <span className="sr-only">沐璿草本護髮 — </span>
             尋找安全又有效的
             <br className="hidden md:block" />
             <span className="text-white">天然護髮？</span>
