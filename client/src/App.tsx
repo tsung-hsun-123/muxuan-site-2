@@ -8,6 +8,8 @@ import ServicesPage from "@/pages/ServicesPage";
 import LocationsPage from "@/pages/LocationsPage";
 import CasesPage from "@/pages/CasesPage";
 import AboutPage from "@/pages/AboutPage";
+import FaqPage from "@/pages/FaqPage";
+import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -18,6 +20,8 @@ function Router() {
       <Route path="/locations" component={LocationsPage} />
       <Route path="/cases" component={CasesPage} />
       <Route path="/about" component={AboutPage} />
+      <Route path="/faq" component={FaqPage} />
+      <Route path="/contact" component={ContactPage} />
       <Route component={NotFound} />
     </Switch>
   );

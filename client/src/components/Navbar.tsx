@@ -5,17 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
-const scrollNavItems = [
-  { name: "服務對象", id: "audience", title: "了解沐璿草本護髮適合哪些服務對象" },
-  { name: "常見問題", id: "faq",      title: "草本護髮常見問與答" },
-  { name: "聯絡我們", id: "contact",  title: "聯絡沐璿草本護髮中心" },
-];
+const scrollNavItems: { name: string; id: string; title: string }[] = [];
 
 const pageNavItems = [
   { name: "服務介紹", href: "/services",  title: "查看沐璿草本護髮服務介紹" },
   { name: "關於沐璿", href: "/about",     title: "關於沐璿草本護髮中心的品牌故事" },
   { name: "成功案例", href: "/cases",     title: "查看沐璿草本護髮成功調理案例" },
-  { name: "分店資訊", href: "/locations", title: "查看沐璿草本護髮全台及海外分店資訊" },
+  { name: "常見問題", href: "/faq",       title: "草本護髮常見問與答" },
+  { name: "聯絡我們", href: "/contact",   title: "聯絡沐璿草本護髮中心" },
+  { name: "門市資訊", href: "/locations", title: "查看沐璿草本護髮全台及海外門市資訊" },
 ];
 
 import logo from "@assets/Untitled_design__15_-removebg-preview_1764006141705.png";
@@ -145,7 +143,7 @@ export default function Navbar() {
                 title="立即預約沐璿草本護髮服務"
                 aria-label="立即預約沐璿草本護髮服務"
                 className="ml-2 bg-primary hover:bg-primary/90 text-white"
-                onClick={() => scrollToSection("contact")}
+                onClick={() => navigate("/contact")}
               >
                 立即預約
               </Button>
@@ -196,7 +194,7 @@ export default function Navbar() {
                     <Button
                       title="立即預約沐璿草本護髮服務"
                       className="mt-4 w-full bg-primary hover:bg-primary/90"
-                      onClick={() => scrollToSection("contact")}
+                      onClick={() => navigate("/contact")}
                     >
                       立即預約
                     </Button>

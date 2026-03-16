@@ -125,7 +125,7 @@ export default function LocationsPage() {
             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
               <Link href="/" className="hover:text-primary transition-colors">首頁</Link>
               <ChevronRight className="w-4 h-4" />
-              <span className="text-foreground font-medium">分店資訊</span>
+              <span className="text-foreground font-medium">門市資訊</span>
             </div>
             <Badge variant="outline" className="mb-4 border-primary/30 text-primary bg-primary/5 px-3 py-1">
               全台及海外
