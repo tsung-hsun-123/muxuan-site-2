@@ -92,6 +92,7 @@ export default function BlogPostPage() {
       script.textContent = JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Article",
+        name: article.title,
         headline: article.title,
         description: article.metaDescription,
         datePublished: article.date,
