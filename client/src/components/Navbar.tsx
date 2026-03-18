@@ -34,6 +34,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [mobileKnowledgeOpen, setMobileKnowledgeOpen] = useState(false);
+  const [knowledgeDropdownOpen, setKnowledgeDropdownOpen] = useState(false);
   const [location, navigate] = useLocation();
 
   const isSubPage = location !== "/";
@@ -151,8 +152,12 @@ export default function Navbar() {
               </li>
             ))}
 
-            {/* 常見問題 split-style dropdown */}
-            <li className="flex items-center">
+            {/* 常見問題 split-style dropdown (hover + click) */}
+            <li
+              className="flex items-center"
+              onMouseEnter={() => setKnowledgeDropdownOpen(true)}
+              onMouseLeave={() => setKnowledgeDropdownOpen(false)}
+            >
               {/* Left: text link navigates directly to /faq */}
               <Link
                 href="/faq"
@@ -171,11 +176,16 @@ export default function Navbar() {
                 常見問題
               </Link>
 
-              {/* Right: chevron button opens dropdown */}
-              <DropdownMenu>
+              {/* Right: chevron — opens dropdown on hover or click */}
+              <DropdownMenu
+                open={knowledgeDropdownOpen}
+                onOpenChange={setKnowledgeDropdownOpen}
+              >
                 <DropdownMenuTrigger asChild>
                   <button
                     aria-label="展開知識選單"
+                    aria-haspopup="true"
+                    aria-expanded={knowledgeDropdownOpen}
                     className={cn(
                       "pr-2 pl-0.5 py-2 text-sm font-medium rounded-r-md transition-colors",
                       isKnowledgeActive
@@ -183,10 +193,20 @@ export default function Navbar() {
                         : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
                     )}
                   >
-                    <ChevronDown className="w-3.5 h-3.5" />
+                    <ChevronDown
+                      className={cn(
+                        "w-3.5 h-3.5 transition-transform duration-150",
+                        knowledgeDropdownOpen ? "rotate-180" : ""
+                      )}
+                    />
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-44 mt-1">
+                <DropdownMenuContent
+                  align="start"
+                  className="w-44 mt-1"
+                  onMouseEnter={() => setKnowledgeDropdownOpen(true)}
+                  onMouseLeave={() => setKnowledgeDropdownOpen(false)}
+                >
                   {knowledgeDropdownItems.map((sub) => (
                     <DropdownMenuItem key={sub.href} asChild>
                       <Link
