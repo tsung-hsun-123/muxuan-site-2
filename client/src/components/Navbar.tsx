@@ -160,6 +160,7 @@ export default function Navbar() {
               <DropdownMenu
                 open={knowledgeDropdownOpen}
                 onOpenChange={setKnowledgeDropdownOpen}
+                modal={false}
               >
                 <DropdownMenuTrigger asChild>
                   <button
