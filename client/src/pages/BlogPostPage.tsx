@@ -13,9 +13,32 @@ function formatDate(dateStr: string) {
   return d.toLocaleDateString("zh-TW", { year: "numeric", month: "long", day: "numeric" });
 }
 
-function renderSection(section: ArticleSection, index: number) {
+function isQSection(section: ArticleSection) {
+  return section.type === "h2" && !!section.text?.match(/^Q\d*[：:]/);
+}
+
+function renderSection(section: ArticleSection, index: number, prevWasQ = false) {
   switch (section.type) {
-    case "h2":
+    case "h2": {
+      if (isQSection(section)) {
+        const qText = section.text ?? "";
+        const colonIdx = qText.search(/[：:]/);
+        const qLabel = colonIdx > -1 ? qText.slice(0, colonIdx + 1) : "Q";
+        const qBody = colonIdx > -1 ? qText.slice(colonIdx + 1).trimStart() : qText;
+        return (
+          <div
+            key={index}
+            className="flex items-start gap-4 rounded-2xl border-l-4 border-primary bg-primary/5 px-5 py-4 mt-10 mb-2"
+          >
+            <span className="shrink-0 font-bold text-primary text-lg leading-snug pt-0.5 min-w-[2rem]">
+              {qLabel}
+            </span>
+            <h2 className="text-xl md:text-2xl font-serif font-bold text-foreground leading-snug m-0">
+              {qBody}
+            </h2>
+          </div>
+        );
+      }
       return (
         <h2
           key={index}
@@ -24,6 +47,7 @@ function renderSection(section: ArticleSection, index: number) {
           {section.text}
         </h2>
       );
+    }
     case "h3":
       return (
         <h3
@@ -34,6 +58,19 @@ function renderSection(section: ArticleSection, index: number) {
         </h3>
       );
     case "p":
+      if (prevWasQ) {
+        return (
+          <div
+            key={index}
+            className="flex items-start gap-4 bg-secondary/50 rounded-xl border border-border/40 px-5 py-4 mb-4"
+          >
+            <span className="shrink-0 font-bold text-muted-foreground text-lg leading-snug pt-0.5 min-w-[2rem]">
+              A
+            </span>
+            <p className="text-foreground/80 text-base leading-8 m-0">{section.text}</p>
+          </div>
+        );
+      }
       return (
         <p key={index} className="text-foreground/80 text-base leading-8 mb-4">
           {section.text}
@@ -43,8 +80,11 @@ function renderSection(section: ArticleSection, index: number) {
       return (
         <ul key={index} className="list-none space-y-2 mb-6 pl-0">
           {section.items?.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-foreground/80 text-base leading-relaxed">
-              <span className="mt-1.5 w-2 h-2 rounded-full bg-primary shrink-0" />
+            <li
+              key={i}
+              className="flex items-start gap-3 bg-primary/5 border border-primary/10 rounded-xl px-4 py-2.5 text-foreground/80 text-base leading-relaxed"
+            >
+              <span className="mt-0.5 text-primary shrink-0 text-base">✦</span>
               {item}
             </li>
           ))}
@@ -53,6 +93,14 @@ function renderSection(section: ArticleSection, index: number) {
     default:
       return null;
   }
+}
+
+function renderSections(content: ArticleSection[]) {
+  return content.map((section, i) => {
+    const prev = content[i - 1];
+    const prevWasQ = !!prev && isQSection(prev);
+    return renderSection(section, i, prevWasQ);
+  });
 }
 
 export default function BlogPostPage() {
@@ -223,24 +271,38 @@ export default function BlogPostPage() {
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-serif font-bold text-foreground leading-snug mb-4">
+            <h1 className="text-3xl md:text-5xl font-serif font-bold text-foreground leading-snug mb-3">
               {article.title}
             </h1>
+            <div className="h-1 w-16 bg-primary rounded-full mb-5" />
             <p className="text-muted-foreground text-lg max-w-2xl">{article.excerpt}</p>
           </motion.div>
         </div>
       </section>
 
+      {/* Cover image */}
+      {article.coverImage && (
+        <div className="container mx-auto px-4 md:px-6 max-w-4xl -mt-6 mb-2">
+          <motion.img
+            src={article.coverImage}
+            alt={article.coverAlt}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="w-full rounded-2xl object-cover max-h-[360px] shadow-md"
+          />
+        </div>
+      )}
+
       {/* Article Body */}
-      <section className="py-16 bg-background">
+      <section className="py-12 bg-background">
         <div className="container mx-auto px-4 md:px-6 max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="prose-like"
           >
-            {article.content.map((section, i) => renderSection(section, i))}
+            {renderSections(article.content)}
           </motion.div>
 
           {/* Author note */}

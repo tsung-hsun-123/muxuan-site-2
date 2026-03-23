@@ -13,6 +13,7 @@ export interface Article {
   readingTime: number;
   metaDescription: string;
   coverAlt: string;
+  coverImage?: string;
   content: ArticleSection[];
 }
 
@@ -245,6 +246,7 @@ export const articles: Article[] = [
     metaDescription:
       "護髮素抹頭皮真的沒問題嗎？本文以 Q&A 解析矽靈堆積、毛囊堵塞與頭皮出油惡性循環的成因，並教你正確使用護髮素的步驟，適合油性頭皮、落髮族群必讀。",
     coverAlt: "護髮素正確使用方式 Q&A — 沐璿草本護髮中心",
+    coverImage: "/blog/conditioner-scalp-mistakes.png",
     content: [
       {
         type: "p",
