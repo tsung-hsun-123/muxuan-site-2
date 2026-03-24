@@ -90,44 +90,6 @@ export default function ContactPage() {
             </p>
           </motion.div>
 
-          <motion.div
-            className="grid sm:grid-cols-3 gap-6 mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <a
-              href="https://lin.ee/NxoDqq0"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="透過LINE預約沐璿草本護髮"
-              className="flex flex-col items-center gap-3 py-8 px-6 rounded-2xl bg-[#00B900] hover:bg-[#00B900]/90 text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
-            >
-              <span className="text-xl font-bold">LINE 加好友</span>
-              <span className="text-sm text-white/80">最快速的預約方式</span>
-              <MessageCircle className="w-8 h-8" />
-            </a>
-
-            <a
-              href="https://www.facebook.com/muherbal"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="前往沐璿草本護髮Facebook粉絲頁"
-              className="flex flex-col items-center gap-3 py-8 px-6 rounded-2xl bg-[#1877F2] hover:bg-[#1877F2]/90 text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
-            >
-              <span className="text-xl font-bold">Facebook</span>
-              <span className="text-sm text-white/80">追蹤最新消息</span>
-              <Facebook className="w-8 h-8" />
-            </a>
-
-            <div className="flex flex-col items-center gap-3 py-8 px-6 rounded-2xl bg-secondary text-foreground shadow-lg">
-              <span className="text-xl font-bold">電話預約</span>
-              <span className="text-sm text-muted-foreground">請依分店直撥</span>
-              <Phone className="w-8 h-8 text-primary" />
-            </div>
-          </motion.div>
-
           {/* Branch phone numbers */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -163,6 +125,44 @@ export default function ContactPage() {
                   <p className="text-muted-foreground text-sm pl-7">{loc.hours}</p>
                 </motion.address>
               ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="grid sm:grid-cols-3 gap-6 mt-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <a
+              href="https://lin.ee/NxoDqq0"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="透過LINE預約沐璿草本護髮"
+              className="flex flex-col items-center gap-3 py-8 px-6 rounded-2xl bg-[#00B900] hover:bg-[#00B900]/90 text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
+            >
+              <span className="text-xl font-bold">LINE 加好友</span>
+              <span className="text-sm text-white/80">最快速的預約方式</span>
+              <MessageCircle className="w-8 h-8" />
+            </a>
+
+            <a
+              href="https://www.facebook.com/muherbal"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="前往沐璿草本護髮Facebook粉絲頁"
+              className="flex flex-col items-center gap-3 py-8 px-6 rounded-2xl bg-[#1877F2] hover:bg-[#1877F2]/90 text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5"
+            >
+              <span className="text-xl font-bold">Facebook</span>
+              <span className="text-sm text-white/80">追蹤最新消息</span>
+              <Facebook className="w-8 h-8" />
+            </a>
+
+            <div className="flex flex-col items-center gap-3 py-8 px-6 rounded-2xl bg-secondary text-foreground shadow-lg">
+              <span className="text-xl font-bold">電話預約</span>
+              <span className="text-sm text-muted-foreground">請依分店直撥</span>
+              <Phone className="w-8 h-8 text-primary" />
             </div>
           </motion.div>
         </div>
