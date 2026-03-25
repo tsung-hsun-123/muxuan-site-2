@@ -24,7 +24,7 @@ const storySrcSet = [
 
 function SingaporeMapIcon() {
   return (
-    <div className="w-28 mb-3 group cursor-default">
+    <div className="max-w-[220px] w-full mb-3 opacity-90 group cursor-default">
       <svg
         viewBox="0 0 240 140"
         xmlns="http://www.w3.org/2000/svg"
