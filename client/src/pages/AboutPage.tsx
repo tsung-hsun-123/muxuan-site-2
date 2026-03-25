@@ -22,6 +22,37 @@ const storySrcSet = [
   { width: 1024, webpSrc: story1024w, avifSrc: story1024wAvif },
 ];
 
+function SingaporeMapIcon() {
+  return (
+    <div className="w-28 mb-3 group cursor-default">
+      <svg
+        viewBox="0 0 240 140"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-full h-auto transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
+        aria-label="新加坡地圖"
+        role="img"
+      >
+        <defs>
+          <filter id="sg-shadow" x="-10%" y="-10%" width="120%" height="130%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="hsl(var(--primary))" floodOpacity="0.18" />
+          </filter>
+        </defs>
+        <path
+          d="M 20,70 C 18,60 22,50 30,45 C 40,38 55,35 70,33 C 85,31 100,28 115,27 C 130,26 148,25 162,28 C 176,31 188,38 200,44 C 212,50 220,58 218,68 C 216,78 210,88 200,92 C 190,96 178,97 165,98 C 152,99 138,99 124,98 C 110,97 96,95 82,92 C 68,89 54,85 42,80 C 30,75 22,80 20,70 Z"
+          fill="hsl(var(--primary) / 0.12)"
+          stroke="hsl(var(--primary))"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+          filter="url(#sg-shadow)"
+        />
+        <circle cx="120" cy="65" r="5" fill="hsl(var(--primary))" />
+        <circle cx="120" cy="65" r="9" fill="hsl(var(--primary))" fillOpacity="0.2" />
+      </svg>
+      <p className="text-xs text-muted-foreground text-center mt-1 font-medium tracking-wide">新加坡</p>
+    </div>
+  );
+}
+
 const milestones = [
   {
     year: "2009",
@@ -205,6 +236,11 @@ export default function AboutPage() {
                     <div className={`flex-1 pr-12 ${isEven ? "text-right" : ""}`}>
                       {isEven ? (
                         <div>
+                          {item.year === "2009" && (
+                            <div className="flex justify-end">
+                              <SingaporeMapIcon />
+                            </div>
+                          )}
                           <span className="block text-6xl font-serif font-bold text-primary/20 leading-none mb-2">
                             {item.year}
                           </span>
@@ -250,6 +286,7 @@ export default function AboutPage() {
                     {/* Dot on the left rail */}
                     <div className="absolute left-[18px] w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm mt-2" />
                     <div>
+                      {item.year === "2009" && <SingaporeMapIcon />}
                       <span className="block text-4xl font-serif font-bold text-primary/25 leading-none mb-1">
                         {item.year}
                       </span>
