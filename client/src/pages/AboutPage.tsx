@@ -242,10 +242,10 @@ export default function AboutPage() {
                   transition={{ duration: 0.7, ease: "easeOut" }}
                 >
                   {/* Desktop: two-column alternating */}
-                  <div className="hidden md:grid md:grid-cols-2 md:min-h-[420px]">
+                  <div className="hidden md:grid md:grid-cols-2 md:min-h-[420px] gap-0">
 
                     {/* Left column */}
-                    <div className={`flex items-stretch ${imageOnLeft ? "pr-16" : "pl-16"} py-10`}>
+                    <div className="flex items-stretch pr-12 py-10">
                       {imageOnLeft ? (
                         /* Image on left */
                         <div className="relative w-full group">
@@ -291,7 +291,7 @@ export default function AboutPage() {
                     </div>
 
                     {/* Right column */}
-                    <div className={`flex items-stretch ${imageOnLeft ? "pl-16" : "pr-16"} py-10`}>
+                    <div className="flex items-stretch pl-12 py-10">
                       {imageOnLeft ? (
                         /* Text on right */
                         <div className="flex flex-col justify-center text-left w-full">
