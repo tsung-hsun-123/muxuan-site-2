@@ -22,6 +22,39 @@ const storySrcSet = [
   { width: 1024, webpSrc: story1024w, avifSrc: story1024wAvif },
 ];
 
+const milestones = [
+  {
+    year: "2009",
+    title: "緣起新加坡",
+    description:
+      "創辦人葉玉女在新加坡四馬路觀音廟的指點下，踏上天然草本頭皮護理的研究之路，開始深入鑽研能真正解決頭皮問題的天然配方。",
+  },
+  {
+    year: "2012",
+    title: "配方突破",
+    description:
+      "歷經無數次試驗與調整，草本配方正式研發成功——有效改善脂漏性皮膚炎、頭皮屑、頭皮癢，並在預防白髮增長方面展現顯著效果。",
+  },
+  {
+    year: "2015",
+    title: "三代見証",
+    description:
+      "配方成功幫助三代家人恢復頭皮健康。從創辦人本身、她的女兒到年邁的母親，這份親身見証成為推動品牌前進最堅實的力量。",
+  },
+  {
+    year: "2018",
+    title: "進駐台灣",
+    description:
+      "隨著新加坡市場逐漸穩定，沐璿正式進入台灣，在台北設立第一間門市，將天然草本護髮帶給更多需要的人。",
+  },
+  {
+    year: "現在",
+    title: "四店持續服務",
+    description:
+      "台北、嘉義兩店、新加坡，沐璿以最天然的成分、最安全的配方，持續守護每一位客人的頭皮健康，實踐「好的產品應讓更多人受惠」的初心。",
+  },
+];
+
 export default function AboutPage() {
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -126,6 +159,111 @@ export default function AboutPage() {
                 </p>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section className="py-20 md:py-32 bg-white overflow-hidden">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Badge variant="outline" className="mb-4 border-primary/30 text-primary bg-primary/5 px-3 py-1">
+              品牌歷程
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground">
+              沐璿走過的每一步
+            </h2>
+          </motion.div>
+
+          <div className="relative max-w-4xl mx-auto">
+            {/* Vertical center line — hidden on mobile, shown md+ */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-primary/20 -translate-x-1/2" />
+
+            {/* Mobile left rail */}
+            <div className="md:hidden absolute left-6 top-0 bottom-0 w-px bg-primary/20" />
+
+            {milestones.map((item, index) => {
+              const isEven = index % 2 === 0;
+              return (
+                <motion.div
+                  key={item.year}
+                  className="relative mb-16 last:mb-0"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.6, delay: 0.05 }}
+                >
+                  {/* Desktop layout: alternating */}
+                  <div className="hidden md:flex items-start gap-0">
+                    {/* Left half */}
+                    <div className={`flex-1 pr-12 ${isEven ? "text-right" : ""}`}>
+                      {isEven ? (
+                        <div>
+                          <span className="block text-6xl font-serif font-bold text-primary/20 leading-none mb-2">
+                            {item.year}
+                          </span>
+                          <h3 className="text-xl font-serif font-bold text-foreground mb-2">
+                            {item.title}
+                          </h3>
+                          <p className="text-muted-foreground leading-relaxed text-sm">
+                            {item.description}
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="h-4" />
+                      )}
+                    </div>
+
+                    {/* Center dot */}
+                    <div className="relative flex-shrink-0 w-0 flex justify-center">
+                      <div className="w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm -translate-x-1/2 mt-2" />
+                    </div>
+
+                    {/* Right half */}
+                    <div className={`flex-1 pl-12 ${!isEven ? "" : ""}`}>
+                      {!isEven ? (
+                        <div>
+                          <span className="block text-6xl font-serif font-bold text-primary/20 leading-none mb-2">
+                            {item.year}
+                          </span>
+                          <h3 className="text-xl font-serif font-bold text-foreground mb-2">
+                            {item.title}
+                          </h3>
+                          <p className="text-muted-foreground leading-relaxed text-sm">
+                            {item.description}
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="h-4" />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Mobile layout: single column with left rail */}
+                  <div className="md:hidden flex items-start gap-6 pl-14">
+                    {/* Dot on the left rail */}
+                    <div className="absolute left-[18px] w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm mt-2" />
+                    <div>
+                      <span className="block text-4xl font-serif font-bold text-primary/25 leading-none mb-1">
+                        {item.year}
+                      </span>
+                      <h3 className="text-lg font-serif font-bold text-foreground mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

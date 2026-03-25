@@ -119,54 +119,54 @@ export default function BlogPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group bg-white rounded-2xl border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col overflow-hidden"
               >
-                {/* Card colour bar */}
-                <div className="h-1.5 bg-primary w-full" />
+                <Link
+                  href={`/blog/${article.slug}`}
+                  title={article.title}
+                  className="flex flex-col flex-1"
+                >
+                  {/* Card colour bar */}
+                  <div className="h-1.5 bg-primary w-full" />
 
-                <div className="p-6 flex flex-col flex-1 gap-4">
-                  {/* Category + meta */}
-                  <div className="flex items-center justify-between flex-wrap gap-2">
-                    <span
-                      className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${
-                        categoryColors[article.category] ??
-                        "bg-primary/5 text-primary border-primary/20"
-                      }`}
-                    >
-                      {article.category}
-                    </span>
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <CalendarDays className="w-3.5 h-3.5" />
-                        {formatDate(article.date)}
+                  <div className="p-6 flex flex-col flex-1 gap-4">
+                    {/* Category + meta */}
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span
+                        className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${
+                          categoryColors[article.category] ??
+                          "bg-primary/5 text-primary border-primary/20"
+                        }`}
+                      >
+                        {article.category}
                       </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5" />
-                        {article.readingTime} 分鐘
-                      </span>
+                      <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <CalendarDays className="w-3.5 h-3.5" />
+                          {formatDate(article.date)}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3.5 h-3.5" />
+                          {article.readingTime} 分鐘
+                        </span>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Title */}
-                  <h2 className="text-xl font-serif font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
-                    <Link href={`/blog/${article.slug}`} title={article.title}>
+                    {/* Title */}
+                    <h2 className="text-xl font-serif font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
                       {article.title}
-                    </Link>
-                  </h2>
+                    </h2>
 
-                  {/* Excerpt */}
-                  <p className="text-muted-foreground text-sm leading-relaxed flex-1">
-                    {article.excerpt}
-                  </p>
+                    {/* Excerpt */}
+                    <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+                      {article.excerpt}
+                    </p>
 
-                  {/* Read more */}
-                  <Link
-                    href={`/blog/${article.slug}`}
-                    title={`閱讀全文：${article.title}`}
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all duration-200 mt-auto"
-                  >
-                    閱讀全文
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
+                    {/* Read more */}
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all duration-200 mt-auto">
+                      閱讀全文
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </Link>
               </motion.article>
             ))}
           </div>

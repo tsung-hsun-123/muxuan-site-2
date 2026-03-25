@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageCircle, Facebook, MapPin, ChevronRight } from "lucide-react";
+import { Phone, MessageCircle, Facebook, MapPin, ChevronRight, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import PageFooter from "@/components/PageFooter";
 
@@ -108,21 +108,44 @@ export default function ContactPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.08 }}
-                  className="not-italic bg-white rounded-2xl border border-border/50 shadow-sm hover:shadow-md transition-shadow p-6 space-y-3"
+                  className="not-italic bg-white rounded-2xl border border-border/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
                 >
-                  <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-primary shrink-0" />
-                    沐璿草本護髮中心 {loc.name}
-                  </h3>
-                  <p className="text-muted-foreground text-sm pl-7">{loc.address}</p>
-                  <a
-                    href={`tel:${loc.phone.replace(/[^0-9+]/g, "")}`}
-                    className="flex items-center gap-2 pl-7 text-primary font-medium hover:underline"
-                  >
-                    <Phone className="w-4 h-4 shrink-0" />
-                    {loc.phone}
-                  </a>
-                  <p className="text-muted-foreground text-sm pl-7">{loc.hours}</p>
+                  {/* Card header */}
+                  <div className="border-t-4 border-primary px-6 py-4">
+                    <h3 className="text-xl font-bold text-foreground">
+                      沐璿草本護髮中心 {loc.name}
+                    </h3>
+                  </div>
+
+                  {/* Card body */}
+                  <div className="px-6 py-5 space-y-4 flex-1">
+                    {/* Address */}
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
+                      <div>
+                        <p className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">地址</p>
+                        <p className="text-sm text-foreground font-medium">{loc.address}</p>
+                      </div>
+                    </div>
+
+                    {/* Hours */}
+                    <div className="flex items-start gap-3">
+                      <Clock className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
+                      <div>
+                        <p className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">營業時間</p>
+                        <p className="text-sm text-foreground font-medium">{loc.hours}</p>
+                      </div>
+                    </div>
+
+                    {/* Phone CTA */}
+                    <a
+                      href={`tel:${loc.phone.replace(/[^0-9+]/g, "")}`}
+                      className="flex items-center justify-center gap-2 w-full mt-2 py-2.5 px-4 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary font-semibold text-sm transition-colors duration-200"
+                    >
+                      <Phone className="w-4 h-4 shrink-0" />
+                      {loc.phone}
+                    </a>
+                  </div>
                 </motion.address>
               ))}
             </div>

@@ -8,6 +8,13 @@ import Navbar from "@/components/Navbar";
 import PageFooter from "@/components/PageFooter";
 import { getArticleBySlug, articles, type ArticleSection } from "@/data/articles";
 
+function buildSrcSet(url: string): string | undefined {
+  if (!url.includes("images.unsplash.com")) return undefined;
+  return [400, 800, 1200]
+    .map((w) => `${url.replace(/w=\d+/, `w=${w}`)} ${w}w`)
+    .join(", ");
+}
+
 function formatDate(dateStr: string) {
   const d = new Date(dateStr);
   return d.toLocaleDateString("zh-TW", { year: "numeric", month: "long", day: "numeric" });
@@ -113,10 +120,11 @@ export default function BlogPostPage() {
       if (ogUrl) ogUrl.setAttribute("content", articleUrl);
       const ogType = document.querySelector('meta[property="og:type"]');
       if (ogType) ogType.setAttribute("content", "article");
-      // og:image — use global site image (update when a branded og image is available)
+      // og:image — prefer article cover, fall back to global site image
       const globalOgImage = document.querySelector('meta[property="og:image"]')?.getAttribute("content") ?? "https://replit.com/public/images/opengraph.png";
+      const resolvedOgImage = article.coverImage ?? globalOgImage;
       const ogImage = document.querySelector('meta[property="og:image"]');
-      if (ogImage) ogImage.setAttribute("content", globalOgImage);
+      if (ogImage) ogImage.setAttribute("content", resolvedOgImage);
 
       // Article JSON-LD
       const existing = document.getElementById("article-jsonld");
@@ -149,14 +157,30 @@ export default function BlogPostPage() {
         inLanguage: "zh-TW",
         image: {
           "@type": "ImageObject",
-          url: globalOgImage,
+          url: article.coverImage ?? globalOgImage,
           description: article.coverAlt,
         },
       });
       document.head.appendChild(script);
+
+      // Preload LCP cover image
+      if (article.coverImage) {
+        const preload = document.createElement("link");
+        preload.id = "article-cover-preload";
+        preload.rel = "preload";
+        preload.as = "image";
+        preload.href = article.coverImage;
+        const srcset = buildSrcSet(article.coverImage);
+        if (srcset) {
+          preload.setAttribute("imagesrcset", srcset);
+          preload.setAttribute("imagesizes", "(max-width: 768px) calc(100vw - 2rem), 896px");
+        }
+        document.head.appendChild(preload);
+      }
     }
 
     return () => {
+      document.getElementById("article-cover-preload")?.remove();
       const existing = document.getElementById("article-jsonld");
       if (existing) existing.remove();
       document.title = "沐璿草本護髮 | 天然・安全・有效";
@@ -268,11 +292,17 @@ export default function BlogPostPage() {
         <div className="container mx-auto px-4 md:px-6 max-w-4xl -mt-6 mb-2">
           <motion.img
             src={article.coverImage}
+            srcSet={buildSrcSet(article.coverImage) ?? undefined}
+            sizes="(max-width: 768px) calc(100vw - 2rem), 896px"
             alt={article.coverAlt}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
             className="w-full rounded-2xl object-cover max-h-[360px] shadow-md"
+            width={1200}
+            height={360}
+            fetchPriority="high"
+            decoding="async"
           />
         </div>
       )}
