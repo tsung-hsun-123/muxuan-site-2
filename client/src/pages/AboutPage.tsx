@@ -8,6 +8,9 @@ import Navbar from "@/components/Navbar";
 import PageFooter from "@/components/PageFooter";
 import { PictureImage } from "@/components/ui/picture-image";
 
+import singaporeIcon from "@assets/singapore_icon.png";
+import image123 from "@assets/123.png";
+import shopImg from "@assets/shop.png";
 import storyImgPng from "@assets/generated_images/symbolic_herbal_journey_image_with_healthy_plant_growing_from_traditional_herbs.png";
 import story320w from "@assets/generated_images/symbolic_herbal_journey_image_with_healthy_plant_growing_from_traditional_herbs-320w.webp";
 import story640w from "@assets/generated_images/symbolic_herbal_journey_image_with_healthy_plant_growing_from_traditional_herbs-640w.webp";
@@ -22,61 +25,36 @@ const storySrcSet = [
   { width: 1024, webpSrc: story1024w, avifSrc: story1024wAvif },
 ];
 
-function SingaporeMapIcon() {
-  return (
-    <div className="max-w-[220px] w-full mb-3 opacity-90 group cursor-default">
-      <svg
-        viewBox="0 0 240 140"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-auto transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
-        aria-label="新加坡地圖"
-        role="img"
-      >
-        <defs>
-          <filter id="sg-shadow" x="-10%" y="-10%" width="120%" height="130%">
-            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="hsl(var(--primary))" floodOpacity="0.18" />
-          </filter>
-        </defs>
-        <path
-          d="M 20,70 C 18,60 22,50 30,45 C 40,38 55,35 70,33 C 85,31 100,28 115,27 C 130,26 148,25 162,28 C 176,31 188,38 200,44 C 212,50 220,58 218,68 C 216,78 210,88 200,92 C 190,96 178,97 165,98 C 152,99 138,99 124,98 C 110,97 96,95 82,92 C 68,89 54,85 42,80 C 30,75 22,80 20,70 Z"
-          fill="hsl(var(--primary) / 0.12)"
-          stroke="hsl(var(--primary))"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-          filter="url(#sg-shadow)"
-        />
-        <circle cx="120" cy="65" r="5" fill="hsl(var(--primary))" />
-        <circle cx="120" cy="65" r="9" fill="hsl(var(--primary))" fillOpacity="0.2" />
-      </svg>
-      <p className="text-xs text-muted-foreground text-center mt-1 font-medium tracking-wide">新加坡</p>
-    </div>
-  );
-}
-
 const milestones = [
   {
     year: "2009",
     title: "緣起新加坡",
     description:
-      "創辦人葉玉女在新加坡四馬路觀音廟的指點下，踏上天然草本頭皮護理的研究之路，開始深入鑽研能真正解決頭皮問題的天然配方。",
+      "創辦人葉玉女在新加坡四馬路觀音廟的指點下，開始研究能解決頭皮問題的天然配方",
+  },
+  {
+    year: "2011",
+    title: "沐璿正式成立",
+    description:
+      "沐璿正式成立，擴大服務客群將這份專業帶給其他有需要的人",
   },
   {
     year: "2012",
-    title: "配方突破",
-    description:
-      "歷經無數次試驗與調整，草本配方正式研發成功——有效改善脂漏性皮膚炎、頭皮屑、頭皮癢，並在預防白髮增長方面展現顯著效果。",
+    title: "台北店正式開幕",
+    description: "沐璿的第一家實體店面就座落在繁華的台北華山市場",
+    address: "臺北市忠孝東路一段108號2樓",
   },
   {
-    year: "2015",
-    title: "三代見証",
-    description:
-      "配方成功幫助三代家人恢復頭皮健康。從創辦人本身、她的女兒到年邁的母親，這份親身見証成為推動品牌前進最堅實的力量。",
+    year: "2017",
+    title: "新加坡店正式開幕",
+    description: "實體店面的開幕，將更專業，高品質的服務帶給新加坡顧客",
+    address: "530 Bedok North St 3, #01-646",
   },
   {
-    year: "2018",
-    title: "進駐台灣",
-    description:
-      "隨著新加坡市場逐漸穩定，沐璿正式進入台灣，在台北設立第一間門市，將天然草本護髮帶給更多需要的人。",
+    year: "2019",
+    title: "嘉義吳鳳南路店正式開幕",
+    description: "從住家到店面，將更專業的服務帶給有需要的人",
+    address: "嘉義市吳鳳南路15-1號",
   },
   {
     year: "現在",
@@ -198,7 +176,7 @@ export default function AboutPage() {
       <section className="py-20 md:py-32 bg-white overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -212,95 +190,54 @@ export default function AboutPage() {
             </h2>
           </motion.div>
 
-          <div className="relative max-w-4xl mx-auto">
-            {/* Vertical center line — hidden on mobile, shown md+ */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-primary/20 -translate-x-1/2" />
-
-            {/* Mobile left rail */}
-            <div className="md:hidden absolute left-6 top-0 bottom-0 w-px bg-primary/20" />
-
-            {milestones.map((item, index) => {
-              const isEven = index % 2 === 0;
-              return (
-                <motion.div
-                  key={item.year}
-                  className="relative mb-16 last:mb-0"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.6, delay: 0.05 }}
-                >
-                  {/* Desktop layout: alternating */}
-                  <div className="hidden md:flex items-start gap-0">
-                    {/* Left half */}
-                    <div className={`flex-1 pr-12 ${isEven ? "text-right" : ""}`}>
-                      {isEven ? (
-                        <div>
-                          {item.year === "2009" && (
-                            <div className="flex justify-end">
-                              <SingaporeMapIcon />
-                            </div>
-                          )}
-                          <span className="block text-6xl font-serif font-bold text-primary/20 leading-none mb-2">
-                            {item.year}
-                          </span>
-                          <h3 className="text-xl font-serif font-bold text-foreground mb-2">
-                            {item.title}
-                          </h3>
-                          <p className="text-muted-foreground leading-relaxed text-sm">
-                            {item.description}
-                          </p>
-                        </div>
-                      ) : (
-                        <div className="h-4" />
-                      )}
+          {/* Vertical single column */}
+          <div className="relative max-w-xs mx-auto">
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-primary/20 -translate-x-1/2" />
+            {milestones.map((item) => (
+              <motion.div
+                key={item.year}
+                className="relative mb-10 last:mb-0"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: 0.05 }}
+              >
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 w-3 h-3 rounded-full bg-primary border-2 border-white shadow-sm z-10" />
+                <div className="border border-primary bg-white overflow-hidden mt-4">
+                  {item.year === "2009" && (
+                    <div className="w-full overflow-hidden">
+                      <img src={singaporeIcon} alt="新加坡地圖" className="w-full h-auto" style={{ marginTop: "-50%" }} />
                     </div>
-
-                    {/* Center dot */}
-                    <div className="relative flex-shrink-0 w-0 flex justify-center">
-                      <div className="w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm -translate-x-1/2 mt-2" />
+                  )}
+                  {item.year === "2011" && (
+                    <div className="w-full flex justify-center py-4">
+                      <img src={image123} alt="沐璿草本護髮標誌" className="w-40 h-auto" />
                     </div>
-
-                    {/* Right half */}
-                    <div className={`flex-1 pl-12 ${!isEven ? "" : ""}`}>
-                      {!isEven ? (
-                        <div>
-                          <span className="block text-6xl font-serif font-bold text-primary/20 leading-none mb-2">
-                            {item.year}
-                          </span>
-                          <h3 className="text-xl font-serif font-bold text-foreground mb-2">
-                            {item.title}
-                          </h3>
-                          <p className="text-muted-foreground leading-relaxed text-sm">
-                            {item.description}
-                          </p>
-                        </div>
-                      ) : (
-                        <div className="h-4" />
-                      )}
+                  )}
+                  {item.year === "2017" && (
+                    <div className="w-full overflow-hidden">
+                      <img src={shopImg} alt="新加坡店" className="w-full h-auto" style={{ marginTop: "-12%" }} />
                     </div>
-                  </div>
-
-                  {/* Mobile layout: single column with left rail */}
-                  <div className="md:hidden flex items-start gap-6 pl-14">
-                    {/* Dot on the left rail */}
-                    <div className="absolute left-[18px] w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm mt-2" />
-                    <div>
-                      {item.year === "2009" && <SingaporeMapIcon />}
-                      <span className="block text-4xl font-serif font-bold text-primary/25 leading-none mb-1">
-                        {item.year}
-                      </span>
-                      <h3 className="text-lg font-serif font-bold text-foreground mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed text-sm">
-                        {item.description}
+                  )}
+                  <div className="px-6 pt-4 pb-6">
+                    <span className="block text-6xl font-serif font-bold text-primary/60 leading-none mb-2 text-center">
+                      {item.year}
+                    </span>
+                    <h3 className="text-xl font-serif font-bold text-foreground mb-3 text-center">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm whitespace-pre-line">
+                      {item.description}
+                    </p>
+                    {"address" in item && (
+                      <p className="text-muted-foreground leading-relaxed text-sm font-bold mt-1">
+                        {item.address}
                       </p>
-                    </div>
+                    )}
                   </div>
-                </motion.div>
-              );
-            })}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

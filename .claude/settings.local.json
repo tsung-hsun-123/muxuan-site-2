@@ -3,7 +3,17 @@
     "allow": [
       "WebFetch(domain:unsplash.com)",
       "WebFetch(domain:images.unsplash.com)",
-      "WebFetch(domain:www.in-n-out.com)"
+      "WebFetch(domain:www.in-n-out.com)",
+      "Bash(magick /tmp/singapore_icon_green.png -crop 133x88+5+5 +repage -resize 400x260 /tmp/singapore_icon_trimmed.png)",
+      "mcp__claude_ai_Canva__get-design-pages",
+      "WebFetch(domain:document-export.canva.com)",
+      "Bash(magick /home/runner/.claude/projects/-home-runner-workspace/4a59c0c3-3ff8-4fbe-ad1b-784c9f14d029/tool-results/webfetch-1774417641790-4x8gg8.png -fuzz 5% -trim +repage /tmp/singapore_p16.png)",
+      "Bash(magick /tmp/singapore_p16.png -unsharp 0x1+1.5+0 /tmp/singapore_sharp.png)",
+      "Bash(magick /home/runner/.claude/projects/-home-runner-workspace/4a59c0c3-3ff8-4fbe-ad1b-784c9f14d029/tool-results/webfetch-1774417641790-4x8gg8.png -fuzz 2% -trim +repage /tmp/sg_extracted.png)",
+      "Bash(magick identify:*)",
+      "Read(//home/runner/**)",
+      "Read(//tmp/**)",
+      "Read(//root/**)"
     ]
   }
 }
