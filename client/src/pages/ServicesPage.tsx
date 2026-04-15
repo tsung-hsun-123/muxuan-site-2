@@ -197,7 +197,17 @@ const servicesJsonLd = {
       "provider": { "@id": "https://muxuantw.com/#organization" },
       "url": "https://muxuantw.com/services",
       "description": "沐璿草本護髮提供兩大草本配方：深層頭皮淨化配方（針對頭皮屑、油脂過剩）與髮根強健滋養配方（針對落髮、稀疏髮質），採用人蔘、何首烏、當歸等中醫草本成分。",
-      "areaServed": ["台灣", "新加坡"],
+      "areaServed": [{ "@type": "Country", "name": "Taiwan" }, { "@type": "Country", "name": "Singapore" }],
+      "offers": {
+        "@type": "Offer",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 800,
+          "maxPrice": 1550,
+          "priceCurrency": "TWD",
+          "description": "依頭髮長度與密度而定，特長另計"
+        }
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "草本護髮療程",

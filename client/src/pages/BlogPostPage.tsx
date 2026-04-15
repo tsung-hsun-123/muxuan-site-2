@@ -120,6 +120,18 @@ export default function BlogPostPage() {
   const article = getArticleBySlug(params.slug ?? "");
 
   useEffect(() => {
+    // Preconnect to Unsplash only on blog post pages
+    const preconnect = document.createElement("link");
+    preconnect.id = "unsplash-preconnect";
+    preconnect.rel = "preconnect";
+    preconnect.href = "https://images.unsplash.com";
+    const dnsPrefetch = document.createElement("link");
+    dnsPrefetch.id = "unsplash-dns-prefetch";
+    dnsPrefetch.rel = "dns-prefetch";
+    dnsPrefetch.href = "https://images.unsplash.com";
+    document.head.appendChild(preconnect);
+    document.head.appendChild(dnsPrefetch);
+
     window.scrollTo({ top: 0 });
     if (article) {
       const articleUrl = `https://muxuantw.com/blog/${article.slug}`;
@@ -143,7 +155,7 @@ export default function BlogPostPage() {
       const ogType = document.querySelector('meta[property="og:type"]');
       if (ogType) ogType.setAttribute("content", "article");
       // og:image — prefer article cover, fall back to global site image
-      const globalOgImage = document.querySelector('meta[property="og:image"]')?.getAttribute("content") ?? "https://replit.com/public/images/opengraph.png";
+      const globalOgImage = document.querySelector('meta[property="og:image"]')?.getAttribute("content") ?? "https://muxuantw.com/opengraph.jpg";
       const resolvedOgImage = article.coverImage ?? globalOgImage;
       const ogImage = document.querySelector('meta[property="og:image"]');
       if (ogImage) ogImage.setAttribute("content", resolvedOgImage);
@@ -172,14 +184,16 @@ export default function BlogPostPage() {
             "name": article.title,
             "description": article.metaDescription,
             "datePublished": article.date,
-            "dateModified": article.date,
+            "dateModified": article.lastUpdated ?? article.date,
             "articleSection": article.category,
             "inLanguage": "zh-TW",
             "url": `https://muxuantw.com/blog/${article.slug}`,
             "isPartOf": { "@id": "https://muxuantw.com/blog" },
             "author": {
               "@type": "Person",
-              "name": "沐璿護理師",
+              "name": "葉玉女",
+              "jobTitle": "創辦人",
+              "url": "https://muxuantw.com/about",
               "worksFor": { "@id": "https://muxuantw.com/#organization" },
             },
             "publisher": { "@id": "https://muxuantw.com/#organization" },
@@ -187,6 +201,8 @@ export default function BlogPostPage() {
               "@type": "ImageObject",
               "url": article.coverImage ?? globalOgImage,
               "description": article.coverAlt,
+              "width": 1200,
+              "height": 630,
             },
             "mainEntityOfPage": {
               "@type": "WebPage",
@@ -214,6 +230,8 @@ export default function BlogPostPage() {
     }
 
     return () => {
+      document.getElementById("unsplash-preconnect")?.remove();
+      document.getElementById("unsplash-dns-prefetch")?.remove();
       document.getElementById("article-cover-preload")?.remove();
       const existing = document.getElementById("article-jsonld");
       if (existing) existing.remove();
@@ -236,6 +254,8 @@ export default function BlogPostPage() {
   }, [article]);
 
   if (!article) {
+    const robots = document.querySelector('meta[name="robots"]');
+    robots?.setAttribute("content", "noindex, nofollow");
     return (
       <div className="min-h-screen bg-background font-sans">
         <Navbar />
@@ -306,6 +326,11 @@ export default function BlogPostPage() {
                 <CalendarDays className="w-4 h-4" />
                 {formatDate(article.date)}
               </span>
+              {article.lastUpdated && article.lastUpdated !== article.date && (
+                <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  最後更新：{formatDate(article.lastUpdated)}
+                </span>
+              )}
               <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
                 <Clock className="w-4 h-4" />
                 閱讀約 {article.readingTime} 分鐘
@@ -364,9 +389,11 @@ export default function BlogPostPage() {
               <span className="text-primary font-bold text-sm">沐</span>
             </div>
             <div>
-              <p className="text-sm font-semibold text-foreground mb-1">沐璿護理師</p>
+              <p className="text-sm font-semibold text-foreground mb-0.5">葉玉女</p>
+              <p className="text-xs text-primary font-medium mb-1">創辦人・沐璿草本護髮中心</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                沐璿草本護髮中心的專業護理師團隊，擁有豐富的頭皮調理經驗，致力於用天然草本幫助每位客戶找回頭皮健康。
+                草本護髮領域深耕逾14年，2011年創立沐璿草本護髮中心，以中醫師調製草本配方為核心，協助數百位客戶從根本改善頭皮健康。
+                <a href="/about" className="ml-1 text-primary hover:underline text-xs">了解更多</a>
               </p>
             </div>
           </motion.div>

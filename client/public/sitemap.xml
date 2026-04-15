@@ -1,109 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <!-- Core pages -->
   <url>
     <loc>https://muxuantw.com/</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/"/>
+    <image:image>
+      <image:loc>https://muxuantw.com/opengraph.jpg</image:loc>
+      <image:title>沐璿草本護髮中心 — 天然草本護髮・頭皮SPA</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://muxuantw.com/services</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/services"/>
   </url>
   <url>
     <loc>https://muxuantw.com/about</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/about"/>
   </url>
   <url>
     <loc>https://muxuantw.com/locations</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/locations"/>
   </url>
   <url>
     <loc>https://muxuantw.com/cases</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/cases"/>
   </url>
   <url>
     <loc>https://muxuantw.com/faq</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/faq"/>
   </url>
   <url>
     <loc>https://muxuantw.com/contact</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/contact"/>
   </url>
 
   <!-- Blog index -->
   <url>
     <loc>https://muxuantw.com/blog</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/blog"/>
   </url>
 
   <!-- Blog articles -->
   <url>
     <loc>https://muxuantw.com/blog/hair-dye-cancer-risk</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/blog/hair-dye-cancer-risk"/>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1200&amp;q=85&amp;auto=format&amp;fit=crop</image:loc>
+      <image:title>染髮劑致癌？醫師破解PPD迷思＋5個安全染髮關鍵</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://muxuantw.com/blog/heat-styling-hair-damage</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/blog/heat-styling-hair-damage"/>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1200&amp;q=100&amp;auto=format&amp;fit=crop</image:loc>
+      <image:title>吹風機、直髮夾天天用？頭髮斷裂毛躁的真正原因在這裡</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://muxuantw.com/blog/conditioner-scalp-mistakes</loc>
     <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/blog/conditioner-scalp-mistakes"/>
+    <image:image>
+      <image:loc>https://muxuantw.com/blog/conditioner-scalp-mistakes.png</image:loc>
+      <image:title>護髮素直接抹頭皮？關於這個習慣，你需要知道的事</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://muxuantw.com/blog/postpartum-hair-loss</loc>
     <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/blog/postpartum-hair-loss"/>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&amp;q=85&amp;auto=format&amp;fit=crop</image:loc>
+      <image:title>產後落髮怎麼辦？原因解析與草本護理建議</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://muxuantw.com/blog/herbal-vs-chemical-dye</loc>
     <lastmod>2026-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/blog/herbal-vs-chemical-dye"/>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1200&amp;q=85&amp;auto=format&amp;fit=crop</image:loc>
+      <image:title>草本染髮 vs 化學染髮：您的頭皮受得了嗎？</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://muxuantw.com/blog/scalp-oil-causes</loc>
     <lastmod>2026-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://muxuantw.com/blog/scalp-oil-causes"/>
+    <image:image>
+      <image:loc>https://muxuantw.com/blog/scalp-oil-causes.webp</image:loc>
+      <image:title>頭皮老是出油？背後的 4 個真正原因</image:title>
+    </image:image>
   </url>
 
 </urlset>

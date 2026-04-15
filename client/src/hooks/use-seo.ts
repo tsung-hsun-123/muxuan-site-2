@@ -6,6 +6,7 @@ const DEFAULTS = {
     "沐璿草本護髮中心採用中醫師調製草本配方，嚴選當歸、人蔘、何首烏等天然中藥材，專業改善白髮、落髮、頭皮屑等問題。台北、嘉義、新加坡服務。",
   canonical: "https://muxuantw.com",
   ogTitle: "沐璿草本護髮中心｜天然草本護髮・頭皮SPA",
+  ogImage: "https://muxuantw.com/opengraph.jpg",
 } as const;
 
 function setMeta(selector: string, attr: string, value: string) {
@@ -18,6 +19,7 @@ export interface SeoOptions {
   canonical: string;
   ogTitle?: string;
   ogType?: string;
+  ogImage?: string;
   /** Structured data object(s) to inject as JSON-LD. Requires jsonLdId. */
   jsonLd?: object;
   /** Unique id for the injected <script> tag, used for cleanup. */
@@ -34,6 +36,7 @@ export function useSeo({
   canonical,
   ogTitle,
   ogType = "website",
+  ogImage,
   jsonLd,
   jsonLdId,
 }: SeoOptions) {
@@ -45,6 +48,8 @@ export function useSeo({
     setMeta('meta[property="og:description"]', "content", description);
     setMeta('meta[property="og:url"]', "content", canonical);
     setMeta('meta[property="og:type"]', "content", ogType);
+    setMeta('meta[property="og:image"]', "content", ogImage ?? DEFAULTS.ogImage);
+    setMeta('meta[name="twitter:image"]', "content", ogImage ?? DEFAULTS.ogImage);
     setMeta('meta[name="twitter:title"]', "content", ogTitle ?? title);
     setMeta('meta[name="twitter:description"]', "content", description);
 
@@ -65,6 +70,8 @@ export function useSeo({
       setMeta('meta[property="og:description"]', "content", DEFAULTS.description);
       setMeta('meta[property="og:url"]', "content", DEFAULTS.canonical);
       setMeta('meta[property="og:type"]', "content", "website");
+      setMeta('meta[property="og:image"]', "content", DEFAULTS.ogImage);
+      setMeta('meta[name="twitter:image"]', "content", DEFAULTS.ogImage);
       setMeta('meta[name="twitter:title"]', "content", DEFAULTS.ogTitle);
       setMeta('meta[name="twitter:description"]', "content", DEFAULTS.description);
       if (jsonLdId) document.getElementById(jsonLdId)?.remove();

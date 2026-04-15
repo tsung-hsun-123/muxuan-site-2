@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSeo } from "@/hooks/use-seo";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -26,22 +26,39 @@ const heroBgSrcSet = [
 
 const locations = [
   {
-    name: "沐璿草本護髮中心(台北店)",
+    name: "沐璿草本護髮中心(台北華山店)",
     city: "台北店",
+    tag: "台北",
     streetAddress: "忠孝東路一段108號",
     addressLocality: "台北市",
     addressRegion: "台北市",
     addressCountry: "TW",
     phone: "02-23967893",
-    hours: "早上9:00 - 下午6:00",
+    hours: "早上8:30 - 下午3:30",
     closed: "星期日、星期一",
-    openingHours: ["Tu-Sa 09:00-18:00"],
-    directions: ["華山市場2樓", "阜杭豆漿對面"],
+    openingHours: ["Tu-Sa 08:30-15:30"],
+    directions: ["華山市場2樓", "阜杭豆漿對面", "善導寺捷運站4號、5號出口"],
     mapUrl: "https://maps.app.goo.gl/kiGMjQ2J4wPozSEHA",
+  },
+  {
+    name: "沐璿草本護髮中心(台北林森店)",
+    city: "台北林森店",
+    tag: "台北",
+    streetAddress: "林森北路5巷10號",
+    addressLocality: "台北市",
+    addressRegion: "台北市",
+    addressCountry: "TW",
+    phone: "",
+    hours: "早上10:00 - 下午6:00（最後預約）",
+    closed: "星期日",
+    openingHours: ["Mo-Sa 10:00-18:00"],
+    directions: ["善導寺捷運站1號、3號、6號出口"],
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=台北市林森北路5巷10號",
   },
   {
     name: "沐璿草本護髮中心(嘉義市店)",
     city: "嘉義市店",
+    tag: "嘉義",
     streetAddress: "吳鳳南路15-1號",
     addressLocality: "嘉義市",
     addressRegion: "嘉義市",
@@ -56,6 +73,7 @@ const locations = [
   {
     name: "沐璿草本護髮中心(嘉義縣府店)",
     city: "嘉義縣府店",
+    tag: "嘉義",
     streetAddress: "祥和一路東段78號",
     addressLocality: "嘉義縣",
     addressRegion: "嘉義縣",
@@ -70,6 +88,7 @@ const locations = [
   {
     name: "沐璿草本護髮中心(新加坡店)",
     city: "新加坡店",
+    tag: "新加坡",
     streetAddress: "BLK 530 Bedok North Street 3, #01-646",
     addressLocality: "Bedok",
     addressRegion: "Singapore",
@@ -87,7 +106,12 @@ const locations = [
 ];
 
 
+const ALL_TAG = "全部";
+const tags = [ALL_TAG, "台北", "嘉義", "新加坡"];
+
 export default function LocationsPage() {
+  const [activeTag, setActiveTag] = useState(ALL_TAG);
+
   useSeo({
     title: "門市地點與營業時間 | 沐璿草本護髮中心",
     description: "沐璿草本護髮中心四處門市：台北忠孝東路（02-23967893）、嘉義市吳鳳南路（05-2222166）、嘉義縣府祥和一路（05-3628586）、新加坡Bedok（+65 6538 9589）。週二至週六09:00-18:00。",
@@ -107,6 +131,8 @@ export default function LocationsPage() {
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
+
+  const filtered = activeTag === ALL_TAG ? locations : locations.filter((l) => l.tag === activeTag);
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -167,6 +193,33 @@ export default function LocationsPage() {
 
           </div>
 
+          {/* Region filter toggle */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="flex items-center gap-2 flex-wrap border-t border-border/40 pt-5 pb-1"
+          >
+            <span className="text-xs text-muted-foreground mr-1 shrink-0">篩選：</span>
+            {tags.map((tag) => {
+              const active = tag === activeTag;
+              return (
+                <button
+                  key={tag}
+                  onClick={() => setActiveTag(tag)}
+                  className={[
+                    "text-sm px-4 py-1.5 rounded-full border transition-all duration-200 font-medium",
+                    active
+                      ? "bg-primary text-white border-primary shadow-sm"
+                      : "bg-white/70 text-muted-foreground border-border/50 hover:border-primary/40 hover:text-primary",
+                  ].join(" ")}
+                >
+                  {tag}
+                </button>
+              );
+            })}
+          </motion.div>
+
           {/* Divider line fading into the section below */}
           <div className="border-t border-border/30" />
         </div>
@@ -175,8 +228,8 @@ export default function LocationsPage() {
       {/* Location Cards */}
       <section className="py-20 md:py-28 bg-stone-50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {locations.map((loc, index) => (
+          <div className="grid sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {filtered.map((loc, index) => (
               <motion.div
                 key={loc.name}
                 initial={{ opacity: 0, y: 20 }}
@@ -186,9 +239,9 @@ export default function LocationsPage() {
                 className="h-full"
               >
                 <Card className="bg-white border-none shadow-md hover:shadow-lg transition-all duration-300 h-full flex flex-col">
-                  <CardContent className="p-8 space-y-6 flex-1 flex flex-col">
+                  <CardContent className="p-8 flex-1 flex flex-col">
                     {/* Header */}
-                    <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center gap-3 mb-6">
                       <div className="w-2 h-8 bg-primary rounded-full shrink-0" />
                       <div>
                         <h2 className="text-xl font-bold text-foreground leading-tight">
@@ -198,61 +251,70 @@ export default function LocationsPage() {
                     </div>
 
                     {/* Contact details — wrapped in <address> for semantic HTML + GEO */}
-                    <address className="not-italic space-y-4 flex-1">
-                      {/* Address */}
-                      <div className="flex items-start gap-3">
-                        <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                        <span className="text-foreground font-medium leading-relaxed">
-                          {loc.addressLocality}{loc.streetAddress}
-                        </span>
-                      </div>
-
-                      {/* Phone */}
-                      <div className="flex items-center gap-3">
-                        <Phone className="w-5 h-5 text-primary shrink-0" />
-                        <a
-                          href={`tel:${loc.phone.replace(/\s/g, "")}`}
-                          className="font-medium tracking-wide text-foreground hover:text-primary transition-colors"
-                        >
-                          {loc.phone}
-                        </a>
-                      </div>
-
-                      {/* Hours */}
-                      <div className="flex items-center gap-3">
-                        <Clock className="w-5 h-5 text-primary shrink-0" />
-                        <time className="text-muted-foreground">{loc.hours}</time>
-                      </div>
-
-                      {/* Closed days */}
-                      <div className="flex items-center gap-3">
-                        <CalendarX className="w-5 h-5 text-primary shrink-0" />
-                        <span className="text-muted-foreground">公休：{loc.closed}</span>
-                      </div>
-
-                      {/* Directions */}
-                      {loc.directions.length > 0 && (
-                        <div className="text-sm bg-stone-50 p-4 rounded-lg border border-stone-100 mt-2">
-                          <div className="flex items-center gap-2 mb-3 text-stone-600 font-bold">
-                            <Navigation className="w-4 h-4" />
-                            <p>交通指引：</p>
-                          </div>
-                          <div className="space-y-2 text-stone-500">
-                            {loc.directions.map((line, i) => (
-                              <p key={i} className="leading-snug pl-3 -indent-3 text-[13px]">
-                                • {line}
-                              </p>
-                            ))}
-                          </div>
+                    <address className="not-italic">
+                      <div className="space-y-4">
+                        {/* Address */}
+                        <div className="flex items-start gap-3">
+                          <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                          <span className="text-foreground font-medium leading-relaxed">
+                            {loc.addressLocality} {loc.streetAddress}
+                          </span>
                         </div>
-                      )}
+
+                        {/* Phone — render spacer when absent to keep field heights equal across cards */}
+                        {loc.phone ? (
+                          <div className="flex items-center gap-3">
+                            <Phone className="w-5 h-5 text-primary shrink-0" />
+                            <a
+                              href={`tel:${loc.phone.replace(/\s/g, "")}`}
+                              className="font-medium tracking-wide text-foreground hover:text-primary transition-colors"
+                            >
+                              {loc.phone}
+                            </a>
+                          </div>
+                        ) : (
+                          <div className="h-5" />
+                        )}
+
+                        {/* Hours */}
+                        <div className="flex items-center gap-3">
+                          <Clock className="w-5 h-5 text-primary shrink-0" />
+                          <time className="text-muted-foreground">{loc.hours}</time>
+                        </div>
+
+                        {/* Closed days */}
+                        <div className="flex items-center gap-3">
+                          <CalendarX className="w-5 h-5 text-primary shrink-0" />
+                          <span className="text-muted-foreground">公休：{loc.closed}</span>
+                        </div>
+                      </div>
                     </address>
+
+                    {/* Directions — sits directly below contact fields, top-aligned across sibling cards */}
+                    {loc.directions.length > 0 && (
+                      <div className="mt-6 text-sm bg-stone-50 p-4 rounded-lg border border-stone-100">
+                        <div className="flex items-center gap-2 mb-3 text-stone-600 font-bold">
+                          <Navigation className="w-4 h-4" />
+                          <p>交通指引：</p>
+                        </div>
+                        <div className="space-y-2 text-stone-500">
+                          {loc.directions.map((line, i) => (
+                            <p key={i} className="leading-snug pl-3 -indent-3 text-[13px]">
+                              • {line}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Spacer pushes map button to the bottom of the card */}
+                    <div className="flex-1" />
 
                     {/* Map button */}
                     <Button
                       asChild
                       variant="outline"
-                      className="w-full mt-2 border-primary/20 text-primary hover:bg-primary/5 shrink-0"
+                      className="w-full mt-6 border-primary/20 text-primary hover:bg-primary/5 shrink-0"
                     >
                       <a href={loc.mapUrl} target="_blank" rel="noopener noreferrer">
                         查看地圖

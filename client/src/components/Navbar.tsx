@@ -231,9 +231,9 @@ export default function Navbar() {
                 title="立即預約沐璿草本護髮服務"
                 aria-label="立即預約沐璿草本護髮服務"
                 className="ml-2 bg-primary hover:bg-primary/90 text-white"
-                onClick={() => navigate("/contact")}
+                asChild
               >
-                立即預約
+                <Link href="/contact">立即預約</Link>
               </Button>
             </li>
           </ul>
@@ -342,9 +342,9 @@ export default function Navbar() {
                     <Button
                       title="立即預約沐璿草本護髮服務"
                       className="mt-4 w-full bg-primary hover:bg-primary/90"
-                      onClick={() => navigate("/contact")}
+                      asChild
                     >
-                      立即預約
+                      <Link href="/contact">立即預約</Link>
                     </Button>
                   </li>
                 </ul>

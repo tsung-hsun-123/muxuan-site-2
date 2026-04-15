@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { PictureImage } from "@/components/ui/picture-image";
 import { ArrowRight, Leaf } from "lucide-react";
@@ -44,52 +44,45 @@ export default function Hero() {
       {/* Content */}
       <div className="container relative z-20 px-4 md:px-6 text-center">
         <div className="bg-black/30 backdrop-blur-[2px] rounded-3xl p-6 md:bg-transparent md:backdrop-blur-none md:p-0 md:rounded-none border border-white/10 md:border-none mb-8 md:mb-0">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-white/50 text-primary mb-6"
+          <div
+            className="animate-fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-white/50 text-primary mb-6"
+            style={{ animationDelay: "0.2s" }}
           >
             <Leaf className="w-4 h-4" />
             <span className="text-sm font-medium tracking-wider">天然・安全・有效</span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-md"
+          <h1
+            className="animate-fade-up text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-md"
+            style={{ animationDelay: "0.4s" }}
           >
             <span className="sr-only">沐璿草本護髮 — </span>
             尋找安全又有效的
             <br className="hidden md:block" />
             <span className="text-white">天然護髮？</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-4 md:mb-10 font-light leading-relaxed shadow-black/20 drop-shadow-sm"
+          <p
+            className="animate-fade-up text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-4 md:mb-10 font-light leading-relaxed shadow-black/20 drop-shadow-sm"
+            style={{ animationDelay: "0.6s" }}
           >
             在沐璿，我們提供「安全、天然、有效」的草本護髮方案，<br/>
             從根本改善頭皮問題，恢復髮絲健康與活力。
-          </motion.p>
+          </p>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        <div
+          className="animate-fade-up flex flex-col sm:flex-row items-center justify-center gap-4"
+          style={{ animationDelay: "0.8s" }}
         >
-          <Button 
-            size="lg" 
-            className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white border-none text-lg h-12 px-8"
-            onClick={() => scrollTo("contact")}
-          >
-            預約體驗
-          </Button>
+          <Link href="/locations">
+            <Button
+              size="lg"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white border-none text-lg h-12 px-8"
+            >
+              門市資訊
+            </Button>
+          </Link>
           <Button 
             size="lg" 
             variant="outline" 
@@ -99,7 +92,7 @@ export default function Hero() {
             了解草本護髮
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

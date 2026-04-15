@@ -9,13 +9,22 @@ const locations = [
     city: "台北店",
     address: "台北市忠孝東路一段108號",
     phone: "02-23967893",
-    hours: "早上9:00 - 下午6:00",
+    hours: "早上8:30 - 下午3:30",
     closed: "星期日、星期一",
     directions: [
       "華山市場2樓",
       "阜杭豆漿對面"
     ],
     mapUrl: "https://maps.app.goo.gl/kiGMjQ2J4wPozSEHA"
+  },
+  {
+    city: "台北林森店",
+    address: "台北市林森北路5巷10號",
+    phone: "",
+    hours: "早上10:00 - 下午6:00（最後預約）",
+    closed: "星期日",
+    directions: ["善導寺捷運站1號、3號、6號出口"],
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=台北市林森北路5巷10號"
   },
   {
     city: "嘉義店",
@@ -67,7 +76,7 @@ export default function Locations() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 gap-8">
           {locations.map((loc, index) => (
             <motion.div
               key={index}
@@ -84,41 +93,46 @@ export default function Locations() {
                     <h3 className="text-2xl font-bold text-foreground">{loc.city}</h3>
                   </div>
                   
-                  <div className="space-y-5 flex-1">
-                    {/* Address */}
-                    <div className="flex items-start gap-3 text-muted-foreground">
-                      <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
-                      <span className="text-foreground font-medium leading-relaxed">
-                        {loc.address}
-                      </span>
-                    </div>
-                    
-                    {/* Phone */}
-                    <div className={`flex items-center gap-3 text-muted-foreground transition-all duration-300 rounded-lg ${highlight ? 'bg-primary/10 scale-105 p-2 -ml-2' : ''}`}>
-                      <Phone className={`w-5 h-5 shrink-0 ${highlight ? 'text-primary animate-bounce' : 'text-primary'}`} />
-                      <span className={`font-medium tracking-wide ${highlight ? 'text-primary font-bold text-lg' : ''}`}>{loc.phone}</span>
-                    </div>
-                    
-                    {/* Hours */}
-                    <div className="flex items-center gap-3 text-muted-foreground">
-                      <Clock className="w-5 h-5 text-primary shrink-0" />
-                      <span className="whitespace-pre-line">{loc.hours}</span>
+                  <div className="flex-1 flex flex-col">
+                    {/* Top fields */}
+                    <div className="space-y-5">
+                      {/* Address */}
+                      <div className="flex items-start gap-3 text-muted-foreground">
+                        <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
+                        <span className="text-foreground font-medium leading-relaxed">
+                          {loc.address}
+                        </span>
+                      </div>
+
+                      {/* Phone */}
+                      {loc.phone && (
+                        <div className={`flex items-center gap-3 text-muted-foreground transition-all duration-300 rounded-lg ${highlight ? 'bg-primary/10 scale-105 p-2 -ml-2' : ''}`}>
+                          <Phone className={`w-5 h-5 shrink-0 ${highlight ? 'text-primary animate-bounce' : 'text-primary'}`} />
+                          <span className={`font-medium tracking-wide ${highlight ? 'text-primary font-bold text-lg' : ''}`}>{loc.phone}</span>
+                        </div>
+                      )}
+
+                      {/* Hours */}
+                      <div className="flex items-center gap-3 text-muted-foreground">
+                        <Clock className="w-5 h-5 text-primary shrink-0" />
+                        <span className="whitespace-pre-line">{loc.hours}</span>
+                      </div>
+
+                      {/* Closed Days */}
+                      <div className="flex items-center gap-3 text-muted-foreground">
+                        <CalendarX className="w-5 h-5 text-primary shrink-0" />
+                        <span>公休：{loc.closed}</span>
+                      </div>
                     </div>
 
-                    {/* Closed Days */}
-                    <div className="flex items-center gap-3 text-muted-foreground">
-                      <CalendarX className="w-5 h-5 text-primary shrink-0" />
-                      <span>公休：{loc.closed}</span>
-                    </div>
-
-                    {/* Directions Box */}
-                    {loc.directions && (
-                      <div className="text-sm bg-stone-50 p-4 rounded-lg border border-stone-100 mt-4 flex flex-col">
+                    {/* Directions Box — mt-auto keeps it aligned at the same height across cards */}
+                    {loc.directions && loc.directions.length > 0 && (
+                      <div className="mt-auto pt-4 text-sm bg-stone-50 p-4 rounded-lg border border-stone-100">
                         <div className="flex items-center gap-2 mb-3 text-stone-600 font-bold shrink-0">
                           <Navigation className="w-4 h-4" />
                           <p>交通指引：</p>
                         </div>
-                        <div className="space-y-2 text-stone-500 flex-1">
+                        <div className="space-y-2 text-stone-500">
                           {loc.directions.map((line, i) => (
                             <p key={i} className="leading-snug pl-3 -indent-3 text-[13px]">• {line}</p>
                           ))}

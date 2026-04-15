@@ -28,7 +28,13 @@ const locations = [
     name: "台北店",
     address: "忠孝東路一段108號",
     phone: "02-23967893",
-    hours: "週二至週六 09:00–18:00",
+    hours: "週二 08:30–15:30",
+  },
+  {
+    name: "台北林森店",
+    address: "台北市林森北路5巷10號",
+    phone: "",
+    hours: "週一至週六 10:00–18:00（最後預約）",
   },
   {
     name: "嘉義市店",
@@ -65,7 +71,7 @@ const contactJsonLd = {
       "url": "https://muxuantw.com/contact",
       "inLanguage": "zh-TW",
       "name": "聯絡沐璿草本護髮中心",
-      "description": "透過LINE、電話聯絡或親自到店諮詢預約。台北、嘉義（市區店、縣府店）、新加坡四處門市歡迎您。",
+      "description": "透過LINE、電話聯絡或親自到店諮詢預約。台北（兩店）、嘉義（市區店、縣府店）、新加坡共五處門市歡迎您。",
       "provider": { "@id": "https://muxuantw.com/#organization" },
     },
   ],
@@ -74,7 +80,7 @@ const contactJsonLd = {
 export default function ContactPage() {
   useSeo({
     title: "聯絡我們 | 沐璿草本護髮中心",
-    description: "透過LINE或電話聯絡沐璿草本護髮中心，預約頭皮護理諮詢。台北、嘉義（市區店與縣府店）、新加坡四處門市歡迎您。",
+    description: "透過LINE或電話聯絡沐璿草本護髮中心，預約頭皮護理諮詢。台北（兩店）、嘉義（市區店與縣府店）、新加坡共五處門市歡迎您。",
     canonical: "https://muxuantw.com/contact",
     ogTitle: "聯絡我們 | 沐璿草本護髮中心",
     jsonLd: contactJsonLd,
@@ -204,13 +210,15 @@ export default function ContactPage() {
                     </div>
 
                     {/* Phone CTA */}
-                    <a
-                      href={`tel:${loc.phone.replace(/[^0-9+]/g, "")}`}
-                      className="flex items-center justify-center gap-2 w-full mt-2 py-2.5 px-4 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary font-semibold text-sm transition-colors duration-200"
-                    >
-                      <Phone className="w-4 h-4 shrink-0" />
-                      {loc.phone}
-                    </a>
+                    {loc.phone && (
+                      <a
+                        href={`tel:${loc.phone.replace(/[^0-9+]/g, "")}`}
+                        className="flex items-center justify-center gap-2 w-full mt-2 py-2.5 px-4 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary font-semibold text-sm transition-colors duration-200"
+                      >
+                        <Phone className="w-4 h-4 shrink-0" />
+                        {loc.phone}
+                      </a>
+                    )}
                   </div>
                 </motion.address>
               ))}

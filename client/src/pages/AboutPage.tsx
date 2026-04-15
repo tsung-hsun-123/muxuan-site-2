@@ -30,6 +30,7 @@ import story640wAvif from "@assets/generated_images/symbolic_herbal_journey_imag
 import story1024wAvif from "@assets/generated_images/symbolic_herbal_journey_image_with_healthy_plant_growing_from_traditional_herbs-1024w.avif";
 import herbsImg from "@assets/generated_images/traditional_chinese_herbs_composition_including_ginseng_and_angelica.png";
 import naturalHerbsImg from "@assets/generated_images/close_up_of_natural_herbs_and_botanical_ingredients.png";
+import taipeiImg from "@assets/generated_images/taipei.jpg";
 
 const heroBgSrcSet = [
   { width: 320, webpSrc: heroBg320w, avifSrc: heroBg320wAvif },
@@ -58,7 +59,7 @@ const milestones: Milestone[] = [
     year: "2009",
     title: "緣起新加坡",
     description:
-      "創辦人葉玉女在新加坡四馬路觀音廟的指點下，踏上天然草本頭皮護理的研究之路，開始深入鑽研能真正解決頭皮問題的天然配方。",
+      "創辦人葉玉女在新加坡四馬路觀音廟的指點下，踏上天然草本頭皮護理的研究之路，開始深入鑽研能真正解決頭皮問題的天然配方",
     image: singaporeImg,
     imageAlt: "新加坡 — 沐璿草本護髮的起源地",
     tag: "起源",
@@ -67,27 +68,27 @@ const milestones: Milestone[] = [
     year: "2011",
     title: "沐璿正式成立",
     description:
-      "歷經無數次試驗，草本配方研發成功。沐璿正式成立，開始將這份專業帶給有需要的人。",
+      "歷經無數次試驗，草本配方研發成功。沐璿正式成立，開始將這份專業帶給有需要的人",
     image: image123,
     imageAlt: "沐璿草本護髮中心品牌標誌",
     tag: "創立",
   },
   {
     year: "2012",
-    title: "台北店正式開幕",
+    title: "台北華山店正式開幕",
     description:
-      "沐璿第一家實體店面在台北華山市場正式開幕，將天然草本護髮服務帶入繁華都會。",
+      "沐璿第一家實體店面在台北華山市場正式開幕，將天然草本護髮服務帶入繁華都會",
     address: "臺北市忠孝東路一段108號2樓",
-    image: herbsImg,
-    imageAlt: "台北店草本護髮服務",
+    image: taipeiImg,
+    imageAlt: "台北華山店草本護髮服務",
     tag: "台北",
   },
   {
     year: "2017",
     title: "新加坡店正式開幕",
     description:
-      "回到品牌緣起之地，新加坡實體店面正式開幕，將更專業、高品質的服務帶給在地顧客。",
-    address: "530 Bedok North St 3, #01-646",
+      "回到品牌緣起之地，新加坡實體店面正式開幕，將更專業、高品質的服務帶給在地顧客",
+    address: "BLK 530 Bedok North Street 3, #01-646",
     image: shopImg,
     imageAlt: "沐璿新加坡店面",
     tag: "新加坡",
@@ -96,7 +97,7 @@ const milestones: Milestone[] = [
     year: "2019",
     title: "嘉義吳鳳南路店開幕",
     description:
-      "從住家到店面，沐璿將草本護髮的專業服務延伸至嘉義，讓更多南台灣的朋友受惠。",
+      "從住家到店面，沐璿將草本護髮的專業服務延伸至嘉義，讓更多南台灣的朋友受惠",
     address: "嘉義市吳鳳南路15-1號",
     image: shopJpegImg,
     imageAlt: "沐璿草本護髮嘉義吳鳳南路店 — 嘉義草本頭皮護理中心門市",
@@ -104,16 +105,22 @@ const milestones: Milestone[] = [
   },
   {
     year: "現在",
-    title: "四店持續服務",
+    title: "五店持續服務",
     description:
-      "台北、嘉義兩店、新加坡，沐璿以最天然的成分、最安全的配方，持續守護每一位客人的頭皮健康，實踐「好的產品應讓更多人受惠」的初心。",
+      "台北、嘉義、新加坡，沐璿以最天然的成分、最安全的配方，持續守護每一位客人的頭皮健康，實踐「好的產品應讓更多人受惠」的初心",
     tag: "持續",
   },
 ];
 
 const imageObjectPosition: Record<string, string> = {
   "2009": "center 45%",
-  "2017": "center 40%",
+  "2012": "center 18%",
+  "2017": "15% 40%",
+};
+
+const imagePaddingY: Record<string, { top: string; bottom: string }> = {
+  "2012": { top: "10%", bottom: "10%" },
+  "2017": { top: "0%", bottom: "10%" },
 };
 
 const aboutJsonLd = {
@@ -206,13 +213,13 @@ export default function AboutPage() {
               </h1>
 
               <p className="text-muted-foreground text-base md:text-lg mb-6 leading-relaxed">
-                源自對「真正安全、天然、有效」護髮方式的追求，一個三代人共同走過的草本療癒旅程。
+                源自對「真正安全、天然、有效」護髮方式的追求，一個三代人共同走過的草本旅程
               </p>
 
               {/* Founder's pull-quote */}
               <blockquote className="border-l-2 border-primary/40 pl-4 mb-8">
-                <p className="font-serif italic text-foreground/70 text-base leading-relaxed">
-                  「好的產品，應讓更多人受惠。」
+                <p className="font-serif italic font-bold text-foreground/70 text-base leading-relaxed">
+                  「好的產品，應讓更多人受惠」
                 </p>
                 <cite className="text-xs text-muted-foreground not-italic mt-1 block">— 創辦人 葉玉女</cite>
               </blockquote>
@@ -221,7 +228,7 @@ export default function AboutPage() {
               <div className="grid grid-cols-4 gap-3">
                 {[
                   { value: "2011", label: "創立" },
-                  { value: "4", label: "服務據點" },
+                  { value: "5", label: "服務據點" },
                   { value: "15+", label: "年專業經驗" },
                 ].map((s, i) => (
                   <motion.div
@@ -325,10 +332,10 @@ export default function AboutPage() {
                   其實，最早面臨頭皮問題的，就是她的家人。創辦人長期深受脂漏性皮膚炎遺傳，有頭皮屑困擾、反覆癢痛，多年難以完全改善。 更讓她掛心的是，女兒也遺傳了同樣的狀況， 而媽媽也多年因脂漏性皮膚炎長期看醫生、打類固醇針，一直反覆。
                 </p>
                 <p>
-                  三代人共同面臨頭皮問題，使她更加堅定要找到真正安全、有效、溫和的天然解方。經過時間淬鍊，此草本配方成功讓三代人恢復頭皮健康，這份親身體驗，成為她推動品牌的最大力量。隨著新加坡市場逐漸穩定，她決定把這份成果帶回台灣 —— 因為她相信，真正好的產品，應該讓更多人受惠。
+                  三代人共同面臨頭皮問題，使她更加堅定要找到真正安全、有效、溫和的天然解方。經過時間淬鍊，此草本配方成功讓三代人恢復頭皮健康，這份親身體驗，成為她推動品牌的最大力量。隨著新加坡市場逐漸穩定，她決定把這份成果帶回台灣讓更多人受惠。
                 </p>
                 <p>
-                  一路走來，她始終堅信：只要專注品質、堅守初心，品牌就會持續成長。每一次努力與突破都讓沐璿更接近「以最天然的方式改善頭皮健康」的使命。沐璿草本護髮的核心精神，是以最真誠的心、最天然的成分、最安全的配方，帶給每一位需要的人。未來，她將持續提升品質、精進技術，讓更多人感受草本護髮所帶來的健康。
+                  每一次努力與突破都讓沐璿更接近「以最天然的方式改善頭皮健康」的使命。沐璿草本護髮的核心精神，是以最真誠的心、最天然的成分、最安全的配方，帶給每一位需要的人。
                 </p>
               </div>
             </motion.div>
@@ -379,15 +386,19 @@ export default function AboutPage() {
                       {imageOnLeft && item.image ? (
                         /* Image on left */
                         <div className="relative w-full group">
-                          <div className="relative overflow-hidden rounded-xl border-2 border-primary/20 shadow-lg aspect-square">
-                            <img
-                              src={item.image}
-                              alt={item.imageAlt}
-                              loading="lazy"
-                              decoding="async"
-                              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                              style={{ objectPosition: imageObjectPosition[item.year] ?? "center center" }}
-                            />
+                          <div className={`relative overflow-hidden rounded-xl border-2 border-primary/20 shadow-lg aspect-square${imagePaddingY[item.year] ? " bg-white" : ""}`}>
+                            <div className="absolute inset-0" style={imagePaddingY[item.year] ? { paddingTop: imagePaddingY[item.year].top, paddingBottom: imagePaddingY[item.year].bottom } : undefined}>
+                              <img
+                                src={item.image}
+                                alt={item.imageAlt}
+                                width={600}
+                                height={600}
+                                loading="lazy"
+                                decoding="async"
+                                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                                style={{ objectPosition: imageObjectPosition[item.year] ?? "center center" }}
+                              />
+                            </div>
                           </div>
                         </div>
                       ) : (
@@ -441,15 +452,19 @@ export default function AboutPage() {
                       ) : item.image ? (
                         /* Image on right */
                         <div className="relative w-full group">
-                          <div className="relative overflow-hidden rounded-xl border-2 border-primary/20 shadow-lg aspect-square">
-                            <img
-                              src={item.image}
-                              alt={item.imageAlt}
-                              loading="lazy"
-                              decoding="async"
-                              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                              style={{ objectPosition: imageObjectPosition[item.year] ?? "center center" }}
-                            />
+                          <div className={`relative overflow-hidden rounded-xl border-2 border-primary/20 shadow-lg aspect-square${imagePaddingY[item.year] ? " bg-white" : ""}`}>
+                            <div className="absolute inset-0" style={imagePaddingY[item.year] ? { paddingTop: imagePaddingY[item.year].top, paddingBottom: imagePaddingY[item.year].bottom } : undefined}>
+                              <img
+                                src={item.image}
+                                alt={item.imageAlt}
+                                width={600}
+                                height={600}
+                                loading="lazy"
+                                decoding="async"
+                                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                                style={{ objectPosition: imageObjectPosition[item.year] ?? "center center" }}
+                              />
+                            </div>
                           </div>
                         </div>
                       ) : null}
@@ -468,15 +483,19 @@ export default function AboutPage() {
                     {/* Content */}
                     <div className="flex-1 pb-2">
                       {item.image && (
-                        <div className="relative overflow-hidden rounded-xl border border-primary/20 shadow-md mb-4 aspect-square">
+                        <div className={`relative overflow-hidden rounded-xl border border-primary/20 shadow-md mb-4 aspect-square${imagePaddingY[item.year] ? " bg-white" : ""}`}>
+                          <div className="absolute inset-0" style={imagePaddingY[item.year] ? { paddingTop: imagePaddingY[item.year].top, paddingBottom: imagePaddingY[item.year].bottom } : undefined}>
                           <img
                             src={item.image}
                             alt={item.imageAlt}
+                            width={600}
+                            height={600}
                             loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover object-center"
                             style={{ objectPosition: imageObjectPosition[item.year] ?? "center center" }}
                           />
+                          </div>
                           <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
                         </div>
                       )}

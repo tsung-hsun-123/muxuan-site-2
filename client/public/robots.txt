@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
+# Allow AI answer-engine crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://muxuantw.com/sitemap.xml

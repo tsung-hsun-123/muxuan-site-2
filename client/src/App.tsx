@@ -1,33 +1,37 @@
 import { Switch, Route } from "wouter";
+import { lazy, Suspense } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Home from "@/pages/Home";
-import ServicesPage from "@/pages/ServicesPage";
-import LocationsPage from "@/pages/LocationsPage";
-import CasesPage from "@/pages/CasesPage";
-import AboutPage from "@/pages/AboutPage";
-import FaqPage from "@/pages/FaqPage";
-import ContactPage from "@/pages/ContactPage";
-import BlogPage from "@/pages/BlogPage";
-import BlogPostPage from "@/pages/BlogPostPage";
-import NotFound from "@/pages/not-found";
+
+const Home = lazy(() => import("@/pages/Home"));
+const ServicesPage = lazy(() => import("@/pages/ServicesPage"));
+const LocationsPage = lazy(() => import("@/pages/LocationsPage"));
+const CasesPage = lazy(() => import("@/pages/CasesPage"));
+const AboutPage = lazy(() => import("@/pages/AboutPage"));
+const FaqPage = lazy(() => import("@/pages/FaqPage"));
+const ContactPage = lazy(() => import("@/pages/ContactPage"));
+const BlogPage = lazy(() => import("@/pages/BlogPage"));
+const BlogPostPage = lazy(() => import("@/pages/BlogPostPage"));
+const NotFound = lazy(() => import("@/pages/not-found"));
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/services" component={ServicesPage} />
-      <Route path="/locations" component={LocationsPage} />
-      <Route path="/cases" component={CasesPage} />
-      <Route path="/about" component={AboutPage} />
-      <Route path="/faq" component={FaqPage} />
-      <Route path="/contact" component={ContactPage} />
-      <Route path="/blog" component={BlogPage} />
-      <Route path="/blog/:slug" component={BlogPostPage} />
-      <Route component={NotFound} />
-    </Switch>
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/services" component={ServicesPage} />
+        <Route path="/locations" component={LocationsPage} />
+        <Route path="/cases" component={CasesPage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/faq" component={FaqPage} />
+        <Route path="/contact" component={ContactPage} />
+        <Route path="/blog" component={BlogPage} />
+        <Route path="/blog/:slug" component={BlogPostPage} />
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 }
 

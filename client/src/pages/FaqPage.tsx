@@ -32,7 +32,7 @@ const heroBgSrcSet = [
 const faqs = [
   {
     question: "Q1：草本護髮真的有效嗎？",
-    answer: "我們自 2012 年以來，已協助無數客戶改善頭皮屑、掉髮、白髮、油脂失衡與敏感不適等狀況。\n天然草本植物富含多種活性營養素，能溫和調理頭皮環境、強化毛囊健康。草本護理著重「循序修復、深層養護」，雖然見效較為自然、漸進，但效果穩定且持久。",
+    answer: "我們自 2012 年以來，已協助數百位客戶改善頭皮屑、掉髮、白髮、油脂失衡與敏感不適等狀況。\n天然草本植物富含多種活性營養素，能溫和調理頭皮環境、強化毛囊健康。草本護理著重「循序修復、深層養護」，雖然見效較為自然、漸進，但效果穩定且持久。",
   },
   {
     question: "Q2：草本護髮能幫助生髮嗎？",
@@ -68,6 +68,7 @@ const faqJsonLd = {
     },
     {
       "@type": "FAQPage",
+      "@id": "https://muxuantw.com/faq",
       "url": "https://muxuantw.com/faq",
       "inLanguage": "zh-TW",
       "mainEntity": faqs.map((faq) => ({
@@ -163,7 +164,7 @@ export default function FaqPage() {
               >
                 <AccordionItem value={`item-${index}`}>
                   <AccordionTrigger className="text-left text-lg font-medium hover:text-primary transition-colors py-6">
-                    {faq.question}
+                    <span className="text-lg font-medium">{faq.question}</span>
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6 whitespace-pre-line">
                     {faq.answer}
