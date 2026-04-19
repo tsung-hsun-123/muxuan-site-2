@@ -392,7 +392,7 @@ export default function BlogPostPage() {
               <p className="text-sm font-semibold text-foreground mb-0.5">葉玉女</p>
               <p className="text-xs text-primary font-medium mb-1">創辦人・沐璿草本護髮中心</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                草本護髮領域深耕逾14年，2011年創立沐璿草本護髮中心，以中醫師調製草本配方為核心，協助數百位客戶從根本改善頭皮健康。
+                草本護髮領域深耕逾14年，2011年創立沐璿草本護髮中心，協助數百位客戶從根本改善頭皮健康。
                 <a href="/about" className="ml-1 text-primary hover:underline text-xs">了解更多</a>
               </p>
             </div>
