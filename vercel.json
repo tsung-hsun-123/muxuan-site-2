@@ -28,6 +28,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/((?!assets|blog|cases|hero.*|logo|favicon|opengraph|robots|sitemap|llms).*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
