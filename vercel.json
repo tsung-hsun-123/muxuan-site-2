@@ -2,6 +2,8 @@
   "outputDirectory": "dist",
   "buildCommand": "npm run build",
   "installCommand": "npm install",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -10,13 +12,21 @@
       ]
     },
     {
-      "source": "/(.*\\.webp|.*\\.avif|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.gif|.*\\.svg|.*\\.ico|.*\\.woff2|.*\\.woff)",
+      "source": "/blog/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
       ]
     },
     {
-      "source": "/(.*\\.js|.*\\.css)",
+      "source": "/(about|cases|services|contact|locations|faq)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    },
+    {
+      "source": "/(.*\\.(js|css|webp|avif|png|jpg|jpeg|gif|svg|ico|woff2|woff))",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
@@ -31,6 +41,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
