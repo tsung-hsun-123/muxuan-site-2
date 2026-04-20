@@ -1,4 +1,7 @@
 {
+  "outputDirectory": "dist",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -28,6 +31,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/:path*", "destination": "/index.html" }
   ]
 }
