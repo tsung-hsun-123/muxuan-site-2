@@ -48,7 +48,7 @@ const locations = [
     addressLocality: "台北市",
     addressRegion: "台北市",
     addressCountry: "TW",
-    phone: "",
+    phone: "02-23967893",
     hours: "早上10:00 - 下午6:00（最後預約）",
     closed: "星期日",
     openingHours: ["Mo-Sa 10:00-18:00"],

@@ -20,7 +20,7 @@ const locations = [
   {
     city: "台北林森店",
     address: "台北市林森北路5巷10號",
-    phone: "",
+    phone: "02-23967893",
     hours: "早上10:00 - 下午6:00（最後預約）",
     closed: "星期日",
     directions: ["善導寺捷運站1號、3號、6號出口"],

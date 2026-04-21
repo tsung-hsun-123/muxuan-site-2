@@ -33,7 +33,7 @@ const locations = [
   {
     name: "台北林森店",
     address: "台北市林森北路5巷10號",
-    phone: "",
+    phone: "02-23967893",
     hours: "週一至週六 10:00–18:00（最後預約）",
   },
   {
