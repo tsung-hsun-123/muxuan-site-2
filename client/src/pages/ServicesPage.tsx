@@ -61,7 +61,7 @@ const formulas = [
     icon: <Droplets className="w-6 h-6" />,
     color: "from-teal-500/10 to-teal-500/5",
     activeColor: "bg-teal-600",
-    ingredients: ["薑萃取", "薄荷精華", "皂角", "艾草", "茶樹"],
+    ingredients: ["當歸", "人蔘", "何首烏", "薑萃取", "薄荷精華"],
     benefits: [
       "溫和溶解毛囊油脂與老廢角質",
       "平衡頭皮油脂分泌，告別黏膩感",
