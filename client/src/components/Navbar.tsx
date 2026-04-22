@@ -244,7 +244,7 @@ export default function Navbar() {
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" aria-label="開啟導覽選單">
-                <Menu className="h-6 w-6" />
+                <Menu className="h-6 w-6" strokeWidth={4} />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px] pt-12">
