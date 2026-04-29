@@ -641,17 +641,9 @@ export default function ServicesPage() {
                 <h2 className="font-serif text-2xl font-bold text-foreground leading-snug">
                   首次草本護髮體驗療程
                 </h2>
-                <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-                  頭皮調理・白髮自然遮蓋，完整療程一次體驗，效果看得見。
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  草本調理頭皮・自然遮蓋白髮・天然無刺激
                 </p>
-                <ul className="space-y-1 pt-1">
-                  {["草本頭皮深層調理", "白髮自然遮蓋染護", "天然成分・無刺激"].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-foreground/70">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
 
               {/* Right — price + CTA */}
