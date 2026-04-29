@@ -190,8 +190,10 @@ function LineModalContent({ onClose }: { onClose: () => void }) {
         {/* Header */}
         <div className="pt-8 pb-5 px-6 text-center border-b border-border/50">
           <img
-            src="/assets/line logo.png"
+            src="/assets/line-logo.webp"
             alt="LINE"
+            width={96}
+            height={96}
             className="w-12 h-12 object-contain mx-auto mb-3"
           />
           <h2 className="font-serif text-xl font-bold text-foreground">
