@@ -367,7 +367,6 @@ export default function AboutPage() {
                   <ul className="space-y-2">
                     {[
                       "頭皮屑反覆、搔癢不止",
-                      "油脂失衡、頭皮敏感",
                       "傳統染劑刺激頭皮",
                       "白髮逐漸增多",
                     ].map((item) => (
@@ -383,7 +382,6 @@ export default function AboutPage() {
                   <ul className="space-y-2">
                     {[
                       "頭皮屑明顯減少",
-                      "油脂平衡、頭皮舒適",
                       "白髮自然遮蓋、無刺激",
                       "頭皮健康逐漸回穩",
                     ].map((item) => (
