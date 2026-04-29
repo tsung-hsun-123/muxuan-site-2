@@ -291,7 +291,7 @@ export function InlineCerts() {
   return (
     <>
       <div className="pt-1">
-        <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-2 px-1">
+        <p className="text-sm font-bold text-foreground tracking-wide mb-3 text-center">
           重金屬檢驗報告
         </p>
         <div className="grid grid-cols-2 gap-3">
