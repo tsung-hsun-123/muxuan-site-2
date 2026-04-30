@@ -33,13 +33,13 @@ export function useLineModal() {
 const LINE_TILES = [
   {
     id: "chiayi",
-    name: "沐璿嘉義",
+    name: "嘉義店",
     qrSrc: "/assets/line-qr-chiayi.webp",
     url: "https://lin.ee/NxoDqq0",
   },
   {
     id: "taipei",
-    name: "沐璿台北",
+    name: "台北店",
     qrSrc: "/assets/line-qr-taipei.webp",
     url: "", // To be added later
   },
