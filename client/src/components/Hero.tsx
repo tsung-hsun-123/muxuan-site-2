@@ -44,36 +44,57 @@ export default function Hero() {
       {/* Content */}
       <div className="container relative z-20 px-4 md:px-6 text-center">
         <div className="bg-black/30 backdrop-blur-[2px] rounded-3xl p-6 md:bg-transparent md:backdrop-blur-none md:p-0 md:rounded-none border border-white/10 md:border-none mb-8 md:mb-0">
+          {/* Badge */}
           <div
             className="animate-fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-white/50 text-primary mb-6"
             style={{ animationDelay: "0.2s" }}
           >
-            <Leaf className="w-4 h-4" />
-            <span className="text-sm font-medium tracking-wider">天然・安全・有效</span>
+            <span className="text-sm font-bold tracking-wider">我們的信念</span>
           </div>
 
+          {/* Lead-in */}
+          <p
+            className="animate-fade-up text-base md:text-lg text-white/70 font-light tracking-widest mb-3 drop-shadow-sm"
+            style={{ animationDelay: "0.45s" }}
+          >
+            沐璿始終相信
+          </p>
+
+          {/* Hero statement */}
           <h1
-            className="animate-fade-up text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-md"
-            style={{ animationDelay: "0.4s" }}
+            className="animate-fade-up text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 drop-shadow-md leading-snug"
+            style={{ animationDelay: "0.65s" }}
           >
             <span className="sr-only">沐璿草本護髮 — </span>
-            尋找安全又有效的
-            <br className="hidden md:block" />
-            <span className="text-white">天然護髮？</span>
+            染髮，也可以是
+            <br />
+            一種溫和的保養。
           </h1>
 
-          <p
-            className="animate-fade-up text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-4 md:mb-10 font-light leading-relaxed shadow-black/20 drop-shadow-sm"
-            style={{ animationDelay: "0.6s" }}
+          {/* Divider */}
+          <div
+            className="animate-fade-up flex items-center justify-center gap-3 mb-6"
+            style={{ animationDelay: "0.8s" }}
           >
-            在沐璿，我們提供「安全、天然、有效」的草本護髮方案，<br/>
-            從根本改善頭皮問題，恢復髮絲健康與活力。
+            <span className="block h-px w-12 bg-white/40" />
+            <Leaf className="w-3 h-3 text-white/50" />
+            <span className="block h-px w-12 bg-white/40" />
+          </div>
+
+          {/* Supporting text */}
+          <p
+            className="animate-fade-up text-base md:text-lg text-white/85 max-w-xl mx-auto mb-4 md:mb-10 font-light leading-loose drop-shadow-sm"
+            style={{ animationDelay: "0.95s" }}
+          >
+            我們堅持以最真誠的心，選用天然草本成分，<br/>
+            打造兼顧「遮蓋白髮」與「頭皮健康」的護理方式，<br/>
+            讓每一次染髮，都是一次安心的調理過程。
           </p>
         </div>
 
         <div
           className="animate-fade-up flex flex-col sm:flex-row items-center justify-center gap-4"
-          style={{ animationDelay: "0.8s" }}
+          style={{ animationDelay: "1.15s" }}
         >
           <Link href="/locations">
             <Button
