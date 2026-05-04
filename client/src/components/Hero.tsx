@@ -54,7 +54,7 @@ export default function Hero() {
 
           {/* Lead-in */}
           <p
-            className="animate-fade-up text-base md:text-lg text-white/70 font-light tracking-widest mb-3 drop-shadow-sm"
+            className="animate-fade-up text-base md:text-lg text-white/85 font-medium tracking-widest mb-3 drop-shadow-sm"
             style={{ animationDelay: "0.45s" }}
           >
             沐璿始終相信
@@ -83,7 +83,7 @@ export default function Hero() {
 
           {/* Supporting text */}
           <p
-            className="animate-fade-up text-base md:text-lg text-white/85 max-w-xl mx-auto mb-4 md:mb-10 font-light leading-loose drop-shadow-sm"
+            className="animate-fade-up text-base md:text-lg text-white/92 max-w-xl mx-auto mb-4 md:mb-10 font-normal leading-loose drop-shadow-sm"
             style={{ animationDelay: "0.95s" }}
           >
             我們堅持以最真誠的心，選用天然草本成分，<br/>
