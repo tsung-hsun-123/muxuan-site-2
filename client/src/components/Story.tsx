@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
 import { PictureImage } from "@/components/ui/picture-image";
 
 import storyImgPng from "@assets/generated_images/symbolic_herbal_journey_image_with_healthy_plant_growing_from_traditional_herbs.png";
@@ -25,6 +24,9 @@ export default function Story() {
             關於沐璿
             <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-primary rounded-full left-1/2 -translate-x-1/2"></span>
           </h2>
+          <h3 className="text-xl text-primary font-medium">
+            源自對「真正安全、天然、有效」護髮方式的追求
+          </h3>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -62,40 +64,13 @@ export default function Story() {
           </motion.div>
 
           {/* Text Column */}
-          <motion.div
+          <motion.div 
             className="lg:col-span-8 space-y-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Belief statement — mirrors About page */}
-            <div>
-              <Badge variant="outline" className="mb-4 border-primary/30 text-primary bg-primary/5 px-3 py-1 font-bold">
-                我們的信念
-              </Badge>
-
-              <p className="text-muted-foreground text-sm tracking-widest font-light mb-2">
-                沐璿始終相信
-              </p>
-
-              <p className="font-serif text-xl md:text-2xl font-bold text-foreground mb-4 leading-snug">
-                染髮，也可以是<br />一種溫和的保養。
-              </p>
-
-              <div className="flex items-center gap-3 mb-4">
-                <span className="block h-px w-8 bg-primary/30" />
-                <span className="text-primary/40 text-xs">✦</span>
-                <span className="block h-px w-8 bg-primary/30" />
-              </div>
-
-              <p className="text-muted-foreground text-sm md:text-base mb-6 leading-loose">
-                我們堅持以最真誠的心，選用天然草本成分，<br />
-                打造兼顧「遮蓋白髮」與「頭皮健康」的護理方式，<br />
-                讓每一次染髮，都是一次安心的調理過程。
-              </p>
-            </div>
-
             <div className="prose prose-lg text-muted-foreground space-y-6 leading-loose text-justify font-sans">
               <p>
                 2009 年，創辦人葉玉女在新加坡四馬路觀音廟的指點下，走上了採用草本頭皮護理這條道路，開啟了天然草本配方的研究旅程。從一開始對頭皮護理毫無概念，到深入研究頭皮修護過程中，經過無數次試驗，終於研發出有效改善頭皮問題的天然配方。此配方不僅讓頭皮屑消失、舒緩頭皮癢，甚至在預防白髮增長方面也展現驚人的效果，奠定了沐璿最堅實的基礎。
