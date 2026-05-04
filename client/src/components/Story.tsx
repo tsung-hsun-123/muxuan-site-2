@@ -24,9 +24,6 @@ export default function Story() {
             關於沐璿
             <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-primary rounded-full left-1/2 -translate-x-1/2"></span>
           </h2>
-          <h3 className="text-xl text-primary font-medium">
-            源自對「真正安全、天然、有效」護髮方式的追求
-          </h3>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 items-start">
