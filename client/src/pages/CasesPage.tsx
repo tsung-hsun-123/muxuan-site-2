@@ -231,6 +231,20 @@ const cases = [
     objectPosition: "center 30%",
   },
   {
+    tag: "草本染白髮",
+    icon: <Leaf className="w-5 h-5 text-primary" />,
+    title: "滿頭白髮，草本染髮自然覆蓋",
+    profile: "女性，嘉義",
+    duration: "調理週期：持續保養",
+    summary:
+      "滿頭白髮，經過草本調理後自然覆蓋，髮色看起來更健康、更有光澤。",
+    beforeSrc: "/cases/white-bef.jpg",
+    afterSrc:  "/cases/white-aft.jpg",
+    beforeAlt: "草本染髮前：頭頂大面積白髮，與化學染髮後的深色髮尾形成明顯對比",
+    afterAlt:  "草本染髮後：白髮自然覆蓋，整體髮色均勻健康有光澤",
+    objectPosition: "center 30%",
+  },
+  {
     tag: "髮量稀疏",
     icon: <Sprout className="w-5 h-5 text-primary" />,
     title: "髮量日漸稀疏，草本調理喚醒沉睡毛囊",
@@ -306,6 +320,13 @@ const casesJsonLd = {
         {
           "@type": "ListItem",
           "position": 4,
+          "name": "滿頭白髮，草本染髮自然覆蓋",
+          "description": "滿頭白髮，經過草本調理後自然覆蓋，髮色看起來更健康、更有光澤。",
+          "url": "https://muxuantw.com/cases#草本染白髮",
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
           "name": "髮量日漸稀疏，草本調理喚醒沉睡毛囊",
           "description": "髮量慢慢減少、頭皮越來越明顯，是許多人不願面對卻又悄悄擔心的困擾。經過草本深層頭皮調理，原本沉寂的毛囊重新獲得滋養，新生髮絲陸續冒出，髮量逐漸恢復。",
           "url": "https://muxuantw.com/cases#髮量稀疏",
