@@ -224,8 +224,8 @@ const cases = [
     duration: "調理週期：12個月",
     summary:
       "長期化學染髮引發頭皮過敏，出現紅腫、灼熱、痂皮等不適。改用草本護理後，頭皮發炎明顯緩解，肌膚屏障逐步修復。",
-    beforeSrc: "/cases/allergy-bef.jpg",
-    afterSrc:  "/cases/allergy-aft.jpg",
+    beforeSrc: "/cases/allergy-bef.jpeg",
+    afterSrc:  "/cases/allergy-aft.jpeg",
     beforeWebpSrcSet: "/cases/allergy-bef-480w.webp 480w, /cases/allergy-bef-768w.webp 768w, /cases/allergy-bef-960w.webp 960w",
     afterWebpSrcSet:  "/cases/allergy-aft-480w.webp 480w, /cases/allergy-aft-768w.webp 768w, /cases/allergy-aft-960w.webp 960w",
     beforeAlt: "化學染髮過敏調理前：頭皮出現紅腫、灼熱、痂皮等過敏反應",
@@ -256,8 +256,8 @@ const cases = [
     duration: "調理週期：持續保養",
     summary:
       "滿頭白髮，經過草本調理後自然覆蓋，髮色看起來更健康、更有光澤。",
-    beforeSrc: "/cases/white-bef.jpg",
-    afterSrc:  "/cases/white-aft.jpg",
+    beforeSrc: "/cases/white-bef.jpeg",
+    afterSrc:  "/cases/white-aft.jpeg",
     beforeWebpSrcSet: "/cases/white-bef-480w.webp 480w, /cases/white-bef-768w.webp 768w, /cases/white-bef-960w.webp 960w",
     afterWebpSrcSet:  "/cases/white-aft-480w.webp 480w, /cases/white-aft-768w.webp 768w, /cases/white-aft-960w.webp 960w",
     beforeAlt: "草本染髮前：頭頂大面積白髮，與化學染髮後的深色髮尾形成明顯對比",
@@ -272,8 +272,8 @@ const cases = [
     duration: "調理週期：12週",
     summary:
       "髮量日漸稀疏，草本護理讓頭髮慢慢長回來。",
-    beforeSrc: "/cases/thin-bef.jpg",
-    afterSrc:  "/cases/thin-aft.jpg",
+    beforeSrc: "/cases/thin-bef.jpeg",
+    afterSrc:  "/cases/thin-aft.jpeg",
     beforeWebpSrcSet: "/cases/thin-bef-480w.webp 480w, /cases/thin-bef-768w.webp 768w, /cases/thin-bef-960w.webp 960w",
     afterWebpSrcSet:  "/cases/thin-aft-480w.webp 480w, /cases/thin-aft-768w.webp 768w, /cases/thin-aft-960w.webp 960w",
     beforeAlt: "髮量稀疏調理前：頭皮明顯外露，髮絲稀疏細軟",
