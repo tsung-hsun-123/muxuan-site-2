@@ -246,10 +246,10 @@ export default function BlogPage() {
             {/* Gradient + expand button — only when collapsed and more posts exist */}
             {!showAll && sortedArticles.length > INITIAL_COUNT && (
               <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center">
-                {/* Fade gradient */}
-                <div className="w-full h-40 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
+                {/* Fade gradient — tall enough to fully hide the bottom card row */}
+                <div className="w-full h-72 bg-gradient-to-t from-background from-40% via-background/95 to-transparent pointer-events-none" />
                 {/* Button sits inside the gradient */}
-                <div className="-mt-10 relative z-10 pb-2">
+                <div className="-mt-14 relative z-10 pb-2">
                   <button
                     onClick={() => setShowAll(true)}
                     className="inline-flex items-center gap-2 bg-white border border-border/60 shadow-md hover:shadow-lg text-foreground font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-200 hover:border-primary/40 hover:text-primary"
