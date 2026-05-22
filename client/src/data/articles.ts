@@ -756,8 +756,7 @@ export const articles: Article[] = [
     metaDescription:
       "更年期掉髮與白髮同時出現的原因是什麼？雌激素下降如何影響毛囊與黑色素？本文以淺顯易懂的方式解析荷爾蒙變化對頭髮的影響，並介紹草本護理如何幫助更年期女性兼顧遮白髮與頭皮健康。",
     coverAlt: "中年女性輕撫頭髮，反映更年期白髮與掉髮困擾，草本頭皮護理幫助荷爾蒙變化期間維持頭皮健康 — 沐璿草本護髮中心",
-    coverImage:
-      "https://images.unsplash.com/photo-1693434361986-6c169ce1eb41?w=1200&q=85&auto=format&fit=crop",
+    coverImage: "/blog/menopause-hair-loss-white-hair.webp",
     content: [
       {
         type: "p",
