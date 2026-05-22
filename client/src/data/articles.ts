@@ -874,8 +874,6 @@ export const articles: Article[] = [
       {
         type: "ref",
         links: [
-          { text: "女性更年期掉髮原因與治療 | 瑞安診所", url: "https://ruianc.com/taichung/menopause-hair-loss-treatment-taichung/" },
-          { text: "更年期脫髮可以逆轉嗎 | lichoiling.com", url: "https://www.lichoiling.com/生髮資訊/更年期脫髮" },
           { text: "更年期更易掉髮、長白髮 | 華人健康網", url: "https://www.top1health.com/Article/94391" },
           { text: "壓力掉髮年輕化 | ETtoday", url: "https://www.ettoday.net/news/20260416/3150123.htm" },
           { text: "Herbal remedies of hair loss — PMC", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12678491/" },
