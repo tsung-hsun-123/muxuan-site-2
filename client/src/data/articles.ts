@@ -892,7 +892,7 @@ export const articles: Article[] = [
     metaDescription:
       "夏天頭皮出油快、有悶臭味、搔癢不停？本文解析夏季頭皮問題的根本原因，點出常見的錯誤照護習慣，並提供夏季頭皮防曬與日常保養的實用建議，幫助你輕鬆度過最難熬的護髮季節。",
     coverAlt: "夏日戶外陽光下女性頭髮隨風飄逸，象徵夏季頭皮健康照護的重要性 — 沐璿草本護髮中心",
-    coverImage: "https://images.unsplash.com/photo-1503936244364-5bf3c3802038?w=1200&q=85&auto=format&fit=crop",
+    coverImage: "/blog/summer-scalp-care.webp",
     content: [
       {
         type: "p",

@@ -10,10 +10,18 @@ import PageFooter from "@/components/PageFooter";
 import { getArticleBySlug, articles, type ArticleSection } from "@/data/articles";
 
 function buildSrcSet(url: string): string | undefined {
-  if (!url.includes("images.unsplash.com")) return undefined;
-  return [400, 800, 1200]
-    .map((w) => `${url.replace(/w=\d+/, `w=${w}`)} ${w}w`)
-    .join(", ");
+  if (url.includes("images.unsplash.com")) {
+    return [400, 800, 1200]
+      .map((w) => `${url.replace(/w=\d+/, `w=${w}`)} ${w}w`)
+      .join(", ");
+  }
+  // Local blog WebP images: /blog/slug.webp → /blog/slug-400w.webp etc.
+  const localMatch = url.match(/^(\/blog\/.+)\.webp$/);
+  if (localMatch) {
+    const base = localMatch[1];
+    return `${base}-400w.webp 400w, ${base}-800w.webp 800w, ${url} 1200w`;
+  }
+  return undefined;
 }
 
 function formatDate(dateStr: string) {
