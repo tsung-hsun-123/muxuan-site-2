@@ -204,7 +204,7 @@ const servicesJsonLd = {
         "@type": "Offer",
         "priceSpecification": {
           "@type": "PriceSpecification",
-          "minPrice": 700,
+          "minPrice": 800,
           "maxPrice": 1550,
           "priceCurrency": "TWD",
           "description": "依頭髮長度與密度而定，特長另計"
@@ -648,7 +648,7 @@ export default function ServicesPage() {
                 <div>
                   <p className="text-xs font-medium text-muted-foreground mb-0.5">首次體驗價</p>
                   <p className="text-5xl font-bold text-primary leading-none">
-                    $700
+                    $800
                     <span className="text-xl font-semibold ml-1">元</span>
                   </p>
                 </div>
