@@ -30,7 +30,7 @@ export default function AnnouncementBar() {
               {/* Desktop copy */}
               <p className="hidden sm:block text-sm text-center leading-snug">
                 🌿 新客首次體驗・草本護髮特惠{" "}
-                <span className="font-bold text-base">$700 元</span>
+                <span className="font-bold text-base">$800 元</span>
               </p>
 
               {/* Mobile copy */}
