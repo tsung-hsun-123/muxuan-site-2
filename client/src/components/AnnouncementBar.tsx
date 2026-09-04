@@ -36,7 +36,7 @@ export default function AnnouncementBar() {
               {/* Mobile copy */}
               <p className="sm:hidden text-sm text-center leading-snug">
                 🌿 首次體驗優惠{" "}
-                <span className="font-bold">$700</span>
+                <span className="font-bold">$800</span>
               </p>
 
               {/* Book now — opens LINE modal */}
