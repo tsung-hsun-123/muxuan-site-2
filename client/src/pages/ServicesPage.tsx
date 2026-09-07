@@ -648,7 +648,7 @@ export default function ServicesPage() {
                 <div>
                   <p className="text-xs font-medium text-muted-foreground mb-0.5">首次體驗價</p>
                   <p className="text-5xl font-bold text-primary leading-none">
-                    $700
+                    $800
                     <span className="text-xl font-semibold ml-1">元</span>
                   </p>
                 </div>
