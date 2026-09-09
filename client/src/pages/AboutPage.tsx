@@ -344,8 +344,8 @@ export default function AboutPage() {
                 <span className="inline-block text-xs font-semibold tracking-widest text-primary/60 uppercase mb-3 border border-primary/20 px-3 py-1 rounded-full bg-primary/5">
                   沐璿創立於 2011 年
                 </span>
-                <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground">
-                  源自三代人的親身故事
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground leading-snug">
+                  來自新加坡的天然植物染，如果需要長期染白髮，是不是可以有一種以天然草本為核心的染髮選擇，讓客人在追求髮色的同時，也多一份安心感？
                 </h2>
               </div>
 
@@ -354,13 +354,6 @@ export default function AboutPage() {
                 <p>
                   隨著年齡增加，毛囊的黑色素會自然老化，開始長出白頭髮。我們服務的客人，多數都有白髮染髮的需求。這些客人因為白髮長出來，需要定期、長期染髮，因此希望尋找一種以天然草本為核心、自己覺得可以安心長期使用的染髮方式。
                 </p>
-                {/* Pivot question */}
-                <blockquote className="border-l-4 border-primary/40 pl-5 py-1 my-6">
-                  <p className="font-serif text-lg font-bold text-foreground/80 italic leading-snug">
-                    「來自新加坡的天然植物染，如果需要長期染白髮，是不是可以有一種以天然草本為核心的染髮選擇，讓客人在追求髮色的同時，也多一份安心感？」
-                  </p>
-                </blockquote>
-
                 <p>
                   在多年的實務經驗中，我持續研究天然草本植物染髮方式，並搭配一些傳統使用的草本材料，例如當歸、人參、何首烏等，希望為需要長期染髮的客人，多提供一個天然草本的選擇。在這 15 年的服務過程中，我觀察到有一些長期做天然植物染的客人，經過多年之後，白髮增加的速度似乎沒有我原本想像中那麼快。
                 </p>

@@ -110,10 +110,10 @@ const articles = [
     slug: "why-return-to-muxuan-plant-dye",
     title: "做過植物染，為什麼又回到沐璿？",
     metaDescription:
-      "一位曾做過植物染的客人重新回到沐璿的故事。了解沐璿 15 年天然植物染服務，及我們如何重視頭皮感受與每一次服務體驗。",
+      "做過植物染為什麼又回到沐璿？了解 15 年天然植物染服務、白髮整理與嘉義、台北天然植物染，如何從實際體驗建立信任。",
     category: "品牌故事",
     date: "2026-09-07",
-    readingTime: 4,
+    readingTime: 5,
     coverImage: "https://muxuantw.com/blog/natural-herbal-hair-color.webp",
     coverAlt: "沐璿草本護髮中心天然植物染與頭皮護理服務體驗",
   },
@@ -121,12 +121,23 @@ const articles = [
     slug: "first-natural-plant-dye-long-term-choice",
     title: "50歲開始出現白髮，第一次體驗天然植物染就決定長期選擇",
     metaDescription:
-      "50 歲開始出現白髮，第一次體驗天然植物染後便決定長期選擇。了解沐璿如何為有白髮染髮需求的客人，提供天然植物染的另一種選擇。",
+      "50 歲開始出現白髮怎麼辦？從第一次體驗天然植物染，了解自然紅棕髮色、白髮整理與嘉義、台北天然植物染服務選擇。",
     category: "品牌故事",
     date: "2026-09-07",
-    readingTime: 4,
+    readingTime: 5,
     coverImage: "https://muxuantw.com/blog/natural-herbal-hair-color.webp",
     coverAlt: "沐璿草本護髮中心天然植物染，為白髮整理提供自然紅棕色系選擇",
+  },
+  {
+    slug: "six-natural-plant-dye-scalp-less-itchy",
+    title: "六次天然植物染後，客人說：「比較不癢了」",
+    metaDescription:
+      "化學染髮後頭皮紅腫、搔癢怎麼辦？一位白髮客人經過六次天然植物染服務後，分享「比較不癢了」，看沐璿如何重視觀察與頭皮照顧。",
+    category: "品牌故事",
+    date: "2026-09-09",
+    readingTime: 5,
+    coverImage: "https://muxuantw.com/blog/natural-herbal-hair-color.webp",
+    coverAlt: "沐璿天然植物染服務，重視白髮整理過程中的頭皮感受與持續觀察",
   },
 ];
 
