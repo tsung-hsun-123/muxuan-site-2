@@ -26,7 +26,7 @@ const heroBgSrcSet = [
 
 const locations = [
   {
-    name: "台北店",
+    name: "台北華山店",
     address: "忠孝東路一段108號",
     phone: "02-23967893",
     hours: "週二 08:30–15:30",

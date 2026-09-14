@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 const locations = [
   {
-    city: "台北店",
+    city: "台北華山店",
     address: "台北市忠孝東路一段108號",
     phone: "02-23967893",
     hours: "早上8:30 - 下午3:30",
@@ -27,7 +27,7 @@ const locations = [
     mapUrl: "https://www.google.com/maps/search/?api=1&query=台北市林森北路5巷10號"
   },
   {
-    city: "嘉義店",
+    city: "嘉義市店",
     address: "嘉義市吳鳳南路15-1號",
     phone: "05-2222166",
     hours: "早上9:00 - 下午6:00",

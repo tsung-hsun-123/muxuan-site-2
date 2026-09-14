@@ -17,7 +17,13 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const distDir = path.resolve(__dirname, "../dist");
+const distDir = path.resolve(__dirname, process.env.PRERENDER_DIST_DIR || "../dist");
+const locations = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../client/src/data/locations.json"), "utf-8"));
+const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+
+function renderLocations() {
+  return `<main class="container mx-auto px-4 py-20"><h1>全台及海外服務據點</h1><div class="grid sm:grid-cols-2 gap-8">${locations.map((loc) => `<section class="bg-white rounded-xl p-8"><h2>${escapeHtml(loc.name)}</h2><address class="not-italic">${escapeHtml(loc.addressLocality)} ${escapeHtml(loc.streetAddress)}<br><a href="tel:${escapeHtml(loc.phone.replace(/\s/g, ""))}">${escapeHtml(loc.phone)}</a></address><p>${escapeHtml(loc.hours)}</p><p>公休：${escapeHtml(loc.closed)}</p>${loc.directions.map((line) => `<p>${escapeHtml(line)}</p>`).join("")}<a href="${escapeHtml(loc.mapUrl)}">查看地圖</a></section>`).join("")}</div></main>`;
+}
 const baseHtmlPath = path.join(distDir, "index.html");
 
 if (!fs.existsSync(baseHtmlPath)) {
@@ -315,6 +321,22 @@ for (const { route, title, desc } of shellRoutes) {
   html = html.replace(/<meta name="twitter:description" content="[^"]*"/, `<meta name="twitter:description" content="${desc}"`);
 
   const outDir = path.join(distDir, route);
+  if (route === "locations") {
+    // Serve the real directory without JavaScript; React replaces it on startup.
+    html = html.replace(/<div id="seo-content"[^>]*>[\s\S]*?<\/div>/, "");
+    const rootStart = html.indexOf('<div id="root">');
+    if (rootStart < 0) throw new Error("Locations prerender: root element missing");
+    const tags = /<div\b[^>]*>|<\/div>/g;
+    tags.lastIndex = rootStart;
+    let depth = 0;
+    let rootEnd = -1;
+    for (let match; (match = tags.exec(html));) {
+      depth += match[0].startsWith("</") ? -1 : 1;
+      if (depth === 0) { rootEnd = tags.lastIndex; break; }
+    }
+    if (rootEnd < 0) throw new Error("Locations prerender: root element unclosed");
+    html = html.slice(0, rootStart) + `<div id="root">${renderLocations()}</div>` + html.slice(rootEnd);
+  }
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "index.html"), html, "utf-8");
   console.log(`✅  dist/${route}/index.html  (canonical: ${url})`);
