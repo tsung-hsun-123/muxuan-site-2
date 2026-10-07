@@ -8,7 +8,7 @@ const locations = [
   {
     city: "台北華山店",
     address: "台北市忠孝東路一段108號",
-    phone: "02-23967893",
+    phone: "0901371301",
     hours: "早上8:30 - 下午3:30",
     closed: "星期日、星期一",
     directions: [
@@ -20,7 +20,7 @@ const locations = [
   {
     city: "台北林森店",
     address: "台北市林森北路5巷10號",
-    phone: "02-23967893",
+    phone: "0901371301",
     hours: "早上10:00 - 下午6:00（最後預約）",
     closed: "星期日",
     directions: ["善導寺捷運站1號、3號、6號出口"],
