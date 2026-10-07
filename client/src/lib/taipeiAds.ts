@@ -7,7 +7,7 @@ declare global {
   interface Window {
     dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
-    muxuanTaipeiAdsInitialized?: boolean;
+    muxuanTaipeiConversionTrackingInitialized?: boolean;
   }
 }
 
@@ -31,23 +31,10 @@ export function getTaipeiConversion(href: string, origin: string) {
   return null;
 }
 
-export function initializeTaipeiAds() {
-  if (window.muxuanTaipeiAdsInitialized) return;
-  window.muxuanTaipeiAdsInitialized = true;
-  window.dataLayer = window.dataLayer || [];
-  if (!window.gtag) {
-    window.gtag = function () { window.dataLayer!.push(arguments); };
-    window.gtag("js", new Date());
-  }
-  // Preserve any consent state configured by the site's consent manager.
-  window.gtag("config", ADS_ID);
-  if (!document.querySelector('script[src^="https://www.googletagmanager.com/gtag/js"]')) {
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${ADS_ID}`;
-    document.head.appendChild(script);
-  }
+export function initializeTaipeiConversionTracking() {
+  if (window.muxuanTaipeiConversionTrackingInitialized) return;
 
+  // The Google tag and command queue are initialized once in client/index.html.
   // Delegation covers React navigation and dynamically mounted LINE popups.
   // Capture is needed because the popup stops click propagation in its bubble phase.
   document.addEventListener("click", (event) => {
@@ -66,4 +53,5 @@ export function initializeTaipeiAds() {
       // Tracking failures must never prevent calling or opening the QR image.
     }
   }, true);
+  window.muxuanTaipeiConversionTrackingInitialized = true;
 }

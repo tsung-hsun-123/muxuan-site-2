@@ -1,17 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Phone, MessageCircle, HelpCircle, Facebook } from "lucide-react";
+import { Phone, MessageCircle, Facebook } from "lucide-react";
 import { useLineModal } from "@/components/LineModal";
+import { Link } from "wouter";
 
 export default function Contact() {
   const { openLineModal } = useLineModal();
-
-  const handleBookingClick = () => {
-    const locationsSection = document.getElementById('locations');
-    if (locationsSection) {
-      locationsSection.scrollIntoView({ behavior: 'smooth' });
-      window.dispatchEvent(new CustomEvent('trigger-phone-highlight'));
-    }
-  };
 
   return (
     <footer id="contact" className="bg-primary/5 pt-20 pb-10">
@@ -26,11 +19,13 @@ export default function Contact() {
           
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             <Button 
+              asChild
               className="h-auto py-6 flex flex-col items-center gap-2 bg-primary hover:bg-primary/90 text-lg"
-              onClick={handleBookingClick}
             >
-              <Phone className="w-6 h-6" />
-              <span>電話預約</span>
+              <Link href="/contact" title="選擇門市電話預約">
+                <Phone className="w-6 h-6" />
+                <span>電話預約</span>
+              </Link>
             </Button>
             <Button 
               className="h-auto py-6 flex flex-col items-center gap-2 bg-[#00B900] hover:bg-[#00B900]/90 text-white text-lg"
