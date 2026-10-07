@@ -18,7 +18,6 @@ const listeners = [];
 class Element {
   constructor(href) { this.href = href; }
   closest() { return this.href === null ? null : this; }
-  getAttribute() { return this.href; }
 }
 const context = {
   exports: {}, URL, Element, Date,
@@ -35,10 +34,10 @@ vm.runInContext(bootstrap[0], context);
 vm.runInContext(code, context);
 const { getTaipeiConversion, initializeTaipeiConversionTracking } = context.exports;
 for (const href of ["tel:09-01371301", "tel:0901371301", "tel:0901-371-301", "tel:+886-901-371-301"]) {
-  assert.equal(getTaipeiConversion(href, context.location.origin)?.contact_action, "phone_click");
+  assert.equal(getTaipeiConversion(href, context.location.origin), "AW-18424373618/7acVCK6P6ZIdEPLCttFE");
 }
 for (const href of ["/assets/line-qr-taipei.webp", "https://muxuantw.com/assets/line-qr-taipei.webp"]) {
-  assert.equal(getTaipeiConversion(href, context.location.origin)?.contact_action, "qr_image_click");
+  assert.equal(getTaipeiConversion(href, context.location.origin), "AW-18424373618/TZJ8CM2l4pIdEPLCttFE");
 }
 for (const href of ["tel:05-2222166", "tel:05-3628586", "tel:+65 6538 9589", "tel:02-23967893", "tel:09013713010", "https://lin.ee/NxoDqq0", "/assets/line-qr-chiayi.webp", "https://example.com/assets/line-qr-taipei.webp", "https://muxuantw.com.evil.test/assets/line-qr-taipei.webp", "/contact", "javascript:alert(1)"]) {
   assert.equal(getTaipeiConversion(href, context.location.origin), null, href);
@@ -59,6 +58,7 @@ click("tel:05-2222166");
 click("https://lin.ee/NxoDqq0");
 click(null);
 assert.equal(events().length, 3);
+assert.deepEqual(Object.keys(events()[0][2]), ["send_to"], "Send only the conversion destination");
 assert.equal(events()[0][2].send_to, "AW-18424373618/7acVCK6P6ZIdEPLCttFE");
 assert.equal(events()[1][2].send_to, "AW-18424373618/TZJ8CM2l4pIdEPLCttFE");
 context.gtag = () => { throw new Error("Tracking blocked"); };

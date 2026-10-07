@@ -5,7 +5,6 @@ const QR_CONVERSION = `${ADS_ID}/TZJ8CM2l4pIdEPLCttFE`;
 
 declare global {
   interface Window {
-    dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
     muxuanTaipeiConversionTrackingInitialized?: boolean;
   }
@@ -16,14 +15,14 @@ export function getTaipeiConversion(href: string, origin: string) {
     const number = href.slice(4).replace(/[\s().-]/g, "");
     // Both 華山 and 林森 currently use this number. Do not match other branches.
     if (["0901371301", "+886901371301"].includes(number)) {
-      return { send_to: PHONE_CONVERSION, contact_action: "phone_click" };
+      return PHONE_CONVERSION;
     }
     return null;
   }
   try {
     const url = new URL(href, origin);
     if (url.origin === origin && url.pathname === "/assets/line-qr-taipei.webp") {
-      return { send_to: QR_CONVERSION, contact_action: "qr_image_click" };
+      return QR_CONVERSION;
     }
   } catch {
     // Invalid links are never conversion targets.
@@ -39,16 +38,12 @@ export function initializeTaipeiConversionTracking() {
   // Capture is needed because the popup stops click propagation in its bubble phase.
   document.addEventListener("click", (event) => {
     if (!(event.target instanceof Element)) return;
-    const anchor = event.target.closest("a[href]");
+    const anchor = event.target.closest<HTMLAnchorElement>("a[href]");
     if (!anchor) return;
-    const conversion = getTaipeiConversion(anchor.getAttribute("href")!, window.location.origin);
-    if (!conversion) return;
+    const sendTo = getTaipeiConversion(anchor.href, window.location.origin);
+    if (!sendTo) return;
     try {
-      window.gtag?.("event", "conversion", {
-        ...conversion,
-        branch_group: "taipei_huashan_linsen",
-        transport_type: "beacon",
-      });
+      window.gtag?.("event", "conversion", { send_to: sendTo });
     } catch {
       // Tracking failures must never prevent calling or opening the QR image.
     }
