@@ -24,7 +24,7 @@ const context = vm.createContext({
 });
 vm.runInContext(code, context);
 const { getTaipeiConversion, initializeTaipeiAds } = context.exports;
-for (const href of ["tel:0901371301", "tel:0901-371-301", "tel:+886-901-371-301"]) {
+for (const href of ["tel:09-01371301", "tel:0901371301", "tel:0901-371-301", "tel:+886-901-371-301"]) {
   assert.equal(getTaipeiConversion(href, window.location.origin)?.contact_action, "phone_click");
 }
 for (const href of ["/assets/line-qr-taipei.webp", "https://muxuantw.com/assets/line-qr-taipei.webp"]) {
