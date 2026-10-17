@@ -10,6 +10,32 @@
       gtag('js', new Date());
       gtag('config', 'AW-18424373618');
     </script>
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+
+    var href = link.getAttribute('href') || '';
+
+    if (href.includes('/assets/line-qr-taipei.webp')) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18424373618/TZJ8CM2l4pIdEPLCttFE'
+        });
+      }
+    }
+
+    if (href.includes('tel:0901371301')) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18424373618/7acVCK6P6ZIdEPLCttFE'
+        });
+      }
+    }
+  }, true);
+})();
+</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>沐璿草本護髮 | 天然・安全・有效</title>
