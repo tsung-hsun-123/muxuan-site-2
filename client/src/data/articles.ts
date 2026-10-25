@@ -8,6 +8,8 @@ export interface ArticleSection {
 export interface Article {
   slug: string;
   title: string;
+  seoTitle?: string;
+  authorType?: "Organization";
   excerpt: string;
   category: string;
   date: string;
@@ -20,6 +22,231 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+  {
+    "slug": "scalp-flakes-causes",
+    "title": "頭皮乾燥還是脂漏性皮膚炎？換季脫屑的3種線索",
+    "seoTitle": "頭皮乾燥還是脂漏性皮膚炎？脫屑原因與照護｜沐璿草本護髮",
+    "excerpt": "黑色衣服上開始出現白屑，明明剛洗完頭，頭皮還是癢。換季時，先留意洗後是舒服、緊繃，還是刺痛，再決定要調整哪些洗護習慣。",
+    "category": "頭皮知識",
+    "readingTime": 7,
+    "metaDescription": "一到秋冬就頭皮癢、頭皮屑變多，洗完還是緊繃或刺痛？了解頭皮乾燥、脂漏性皮膚炎與洗護產品刺激的差異，從洗頭頻率、去屑洗髮精到草本護理，找到適合當下狀況的照顧方式，也知道何時該看皮膚科。",
+    "date": "2026-10-25",
+    "lastUpdated": "2026-10-25",
+    "authorType": "Organization",
+    "coverImage": "/blog/scalp-flakes-causes.webp",
+    "coverAlt": "女性在自然光下以指尖輕分髮際旁的頭髮，觀察頭皮狀況",
+    "content": [
+      {
+        "type": "p",
+        "text": "換上深色上衣，才發現肩膀上的白屑比前幾週多。明明昨晚洗過頭，今天坐在辦公室，手又忍不住往頭上抓。"
+      },
+      {
+        "type": "p",
+        "text": "遇到換季頭皮癢，很容易先懷疑洗得不夠乾淨，於是把水調熱、多洗一次，再加上去屑或去角質產品。但頭皮乾燥、脂漏性皮膚炎、洗護產品引起的刺激，都可能出現癢和脫屑。照顧方式得跟著原因調整。[美國皮膚科醫學會對乾燥頭皮與頭皮屑的說明](https://www.aad.org/public/everyday-care/hair-scalp-care/scalp/dry-scalp-conditions)，就提醒兩者需要不同的處理。"
+      },
+      {
+        "type": "p",
+        "text": "先整理三件事：不舒服是洗完就出現，還是隔天才開始？除了頭皮，耳後或眉毛也會脫皮嗎？最近有沒有換產品或染髮？這些線索不能替你診斷，但能幫你在諮詢時說清楚狀況。"
+      },
+      {
+        "type": "h2",
+        "text": "為什麼一換季，頭皮就開始癢？"
+      },
+      {
+        "type": "p",
+        "text": "天氣轉冷、空氣變乾，部分人的頭皮會更容易乾燥；原本有頭皮屑的人，也可能在冷天或壓力大時出現較明顯的症狀。依照 [NHS 的頭皮屑衛教](https://www.nhs.uk/conditions/Dandruff/)，頭皮屑與皮膚上的酵母菌、濕疹等因素有關，不能單憑白屑就認定是衛生習慣不好。"
+      },
+      {
+        "type": "p",
+        "text": "換季時還有一件容易忽略的事：天氣變了，洗頭習慣卻照舊。夏天用得舒服的清潔產品，到了頭皮偏乾的時候，可能洗完就覺得緊。有人怕冷，把水溫調高，洗後也更不舒服。"
+      },
+      {
+        "type": "p",
+        "text": "先留意最近改了什麼，比急著再買一瓶產品更有幫助。"
+      },
+      {
+        "type": "h2",
+        "text": "頭皮乾燥、脂漏性皮膚炎或產品刺激？先整理三種線索"
+      },
+      {
+        "type": "h3",
+        "text": "洗完就緊繃，甚至有點刺"
+      },
+      {
+        "type": "p",
+        "text": "如果清洗後的不舒服特別明顯，可以先檢查水溫、搓洗力道和產品。台大醫院在[〈淺談脂漏性皮膚炎〉](https://health.ntuh.gov.tw/health/new/6586.html)中指出，過度清潔會破壞皮膚保護層；洗後乾澀緊繃，是值得調整清潔方式的訊號。"
+      },
+      {
+        "type": "p",
+        "text": "這時先把清潔步驟簡化，觀察減少刺激後的變化。如果每次用同一瓶都會刺痛，就停用並尋求專業建議，不需要勉強把它用完。"
+      },
+      {
+        "type": "h3",
+        "text": "頭皮會油，也反覆出現紅癢、脫屑"
+      },
+      {
+        "type": "p",
+        "text": "油和脫屑可以同時發生。脂漏性皮膚炎常出現在皮脂腺較多的部位，包括頭皮、臉部與耳朵周圍；成因涉及皮脂、皮屑芽孢菌和個人的發炎反應。"
+      },
+      {
+        "type": "p",
+        "text": "如果頭皮之外，耳後、眉毛或鼻翼旁也反覆紅癢、脫皮，看診時一起告訴醫師。這些位置是判斷的線索，但光看皮屑大小、顏色，仍不足以自行確診。資料來源：[台大醫院皮膚部](https://health.ntuh.gov.tw/health/new/6586.html)。"
+      },
+      {
+        "type": "h3",
+        "text": "換了洗髮精、染髮或加用精華後才開始癢"
+      },
+      {
+        "type": "p",
+        "text": "回想症狀出現前，有沒有剛換洗髮精、染髮，或開始用頭皮噴霧。洗髮精殘留可能造成刺激，染劑和其他洗護產品也可能引起接觸性皮膚炎。"
+      },
+      {
+        "type": "p",
+        "text": "如果髮際線、耳後或脖子接觸產品的地方也出現疹子，記下產品名稱與使用時間，帶給皮膚科醫師看。這比同時換掉所有瓶罐，更容易說清楚發生了什麼。參考：[美國皮膚科醫學會：頭皮搔癢的常見原因](https://www.aad.org/public/everyday-care/itchy-skin/itch-relief/relieve-scalp-itch)。"
+      },
+      {
+        "type": "h2",
+        "text": "換季洗頭，先調整這幾個地方"
+      },
+      {
+        "type": "h3",
+        "text": "水溫舒服就好，用指腹輕洗"
+      },
+      {
+        "type": "p",
+        "text": "洗的時候避免燙熱的水，也別用指甲把白屑刮下來。以指腹輕洗，仔細沖掉洗髮精；已經抓破的地方更要避開摩擦。國泰綜合醫院的[換季頭皮護理衛教](https://www.cgh.org.tw/rwd1320/store/F4/639-17.pdf)也提醒，清潔時應避免指甲搔抓。"
+      },
+      {
+        "type": "h3",
+        "text": "洗頭頻率看出油、流汗和洗後感受"
+      },
+      {
+        "type": "p",
+        "text": "每天洗頭是否合適，要看頭皮狀況、髮質與使用的產品。容易出油、運動後流汗的人，和頭皮偏乾的人，未必需要相同頻率。去屑洗髮精的使用頻率，也可能與一般洗髮精不同。"
+      },
+      {
+        "type": "p",
+        "text": "與其照著別人的日程表洗，可以記下自己何時開始油、何時開始癢，以及洗後是否舒服。有用藥或治療型洗劑，則依照醫囑和產品標示。[美國皮膚科醫學會的去屑建議](https://www.aad.org/public/everyday-care/hair-scalp-care/scalp/treat-dandruff)同樣依髮質與頭皮需求調整用法。"
+      },
+      {
+        "type": "h3",
+        "text": "頭皮紅癢時，先暫停額外去角質"
+      },
+      {
+        "type": "p",
+        "text": "看到白屑就想把它清掉，很能理解。但頭皮正在紅、刺、痛的時候，先別再加上磨砂膏、去角質酸類或用力刷洗。先讓醫師判斷是否有發炎，再決定適合的清潔方式。[皮膚科醫師曾奕騰的洗護建議](https://www.goodskin.com.tw/article.php?act=view&no=60)也提醒，不適當的頭皮去角質可能加重刺激。"
+      },
+      {
+        "type": "p",
+        "text": "已經由醫師安排的治療，則依原本指示使用，不要因為看到「酸類」兩個字就自行停藥。"
+      },
+      {
+        "type": "h2",
+        "text": "去屑洗髮精怎麼用，才不會一直換卻沒改善？"
+      },
+      {
+        "type": "p",
+        "text": "先看有效成分，再看使用方法。有些去屑成分針對酵母菌，有些幫助減少鱗屑，作用並不相同。"
+      },
+      {
+        "type": "p",
+        "text": "使用時有三件事值得確認："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "用在哪裡：依標示清潔頭皮，別只搓洗髮尾。",
+          "停留多久：照產品標示或醫師指示，停留時間並非越久越好。",
+          "多久用一次：依成分、頭皮耐受度和治療安排調整，避免自行增加頻率。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "如果已經確診脂漏性皮膚炎，症狀減輕後仍可能需要維持照護，應和醫師討論後續用法。參考：[美國皮膚科醫學會：脂漏性皮膚炎的診斷與治療](https://www.aad.org/public/diseases/a-z/seborrheic-dermatitis-treatment)。"
+      },
+      {
+        "type": "h2",
+        "text": "頭皮敏感時，草本產品也要看實際反應"
+      },
+      {
+        "type": "p",
+        "text": "挑選草本洗護時，除了植物成分名稱，也要留意完整配方、香味和自己的使用感受。植物來源的精油同樣可能引起過敏；DermNet 的[精油接觸性皮膚炎說明](https://dermnetnz.org/topics/allergic-contact-dermatitis-to-essential-oils)列出的常見例子，就包括茶樹精油。"
+      },
+      {
+        "type": "p",
+        "text": "如果用了會紅、癢、灼熱，就先停用。頭皮已經破皮、滲液或明顯發炎時，先到皮膚科處理，再討論後續保養。草本護理的選擇，也應建立在當下頭皮能接受的範圍內。"
+      },
+      {
+        "type": "h2",
+        "text": "什麼時候該看皮膚科？"
+      },
+      {
+        "type": "p",
+        "text": "頭皮很癢、明顯紅腫，或臉部也出現搔癢脫屑時，就值得就醫。若已依照指示使用去屑洗髮精約四週，仍沒有改善，也應請醫師確認原因；症狀嚴重時不需要等滿四週。這是 [NHS 的就醫建議](https://www.nhs.uk/conditions/Dandruff/)。"
+      },
+      {
+        "type": "p",
+        "text": "若伴隨疼痛、滲液或掉髮明顯增加，也別只當作換季現象。看診時帶上最近用的洗護產品，並說明開始不舒服的時間，能幫助醫師釐清原因。參考：[皮膚科醫師談頭皮紅癢與洗護選擇](https://www.goodskin.com.tw/article.php?act=view&no=60)。"
+      },
+      {
+        "type": "h2",
+        "text": "預約頭皮護理前，可以先準備什麼？"
+      },
+      {
+        "type": "p",
+        "text": "把目前的洗髮精名稱、洗頭頻率、染燙時間，以及最不舒服的時段記下來。例如：「洗完立刻緊繃」和「隔天下午開始油癢」，就是兩種不同的描述。"
+      },
+      {
+        "type": "p",
+        "text": "若想了解沐璿的日常頭皮養護，可以先查看[草本護髮服務](https://muxuantw.com/services)，或透過[聯絡頁面](https://muxuantw.com/contact)諮詢。預約時主動告知過敏史、正在使用的藥品和近期頭皮狀況，讓護理人員了解你的需求。"
+      },
+      {
+        "type": "p",
+        "text": "今晚先從一次溫和的清洗開始。洗後不用急著加擦新產品，留意頭皮的感受，記下來；若仍反覆不舒服，就把這些紀錄帶去看皮膚科。"
+      },
+      {
+        "type": "ref",
+        "links": [
+          {
+            "text": "美國皮膚科醫學會對乾燥頭皮與頭皮屑的說明",
+            "url": "https://www.aad.org/public/everyday-care/hair-scalp-care/scalp/dry-scalp-conditions"
+          },
+          {
+            "text": "NHS 的就醫建議",
+            "url": "https://www.nhs.uk/conditions/Dandruff/"
+          },
+          {
+            "text": "台大醫院皮膚部",
+            "url": "https://health.ntuh.gov.tw/health/new/6586.html"
+          },
+          {
+            "text": "美國皮膚科醫學會：頭皮搔癢的常見原因",
+            "url": "https://www.aad.org/public/everyday-care/itchy-skin/itch-relief/relieve-scalp-itch"
+          },
+          {
+            "text": "換季頭皮護理衛教",
+            "url": "https://www.cgh.org.tw/rwd1320/store/F4/639-17.pdf"
+          },
+          {
+            "text": "美國皮膚科醫學會的去屑建議",
+            "url": "https://www.aad.org/public/everyday-care/hair-scalp-care/scalp/treat-dandruff"
+          },
+          {
+            "text": "皮膚科醫師談頭皮紅癢與洗護選擇",
+            "url": "https://www.goodskin.com.tw/article.php?act=view&no=60"
+          },
+          {
+            "text": "美國皮膚科醫學會：脂漏性皮膚炎的診斷與治療",
+            "url": "https://www.aad.org/public/diseases/a-z/seborrheic-dermatitis-treatment"
+          },
+          {
+            "text": "精油接觸性皮膚炎說明",
+            "url": "https://dermnetnz.org/topics/allergic-contact-dermatitis-to-essential-oils"
+          }
+        ]
+      }
+    ]
+  },
   {
     slug: "hair-dye-cancer-risk",
     title: "染髮劑致癌？醫師破解PPD迷思＋5個安全染髮關鍵",

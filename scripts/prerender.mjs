@@ -33,119 +33,14 @@ if (!fs.existsSync(baseHtmlPath)) {
 
 const baseHtml = fs.readFileSync(baseHtmlPath, "utf-8");
 
-// Article data mirrored from client/src/data/articles.ts
-// Keep in sync when new articles are added.
-const articles = [
-  {
-    slug: "hair-dye-cancer-risk",
-    title: "染髮劑致癌？醫師破解PPD迷思＋5個安全染髮關鍵",
-    metaDescription:
-      "染髮劑致癌嗎？醫師指出PPD僅屬第3類致癌物，風險遠低於想像。了解IARC分級、染髮劑副作用，以及5大安全染髮方法，讓你染得美又放心。",
-    category: "頭皮知識",
-    date: "2026-04-01",
-    readingTime: 7,
-    coverImage:
-      "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1200&q=85&auto=format&fit=crop",
-    coverAlt:
-      "美髮師為客人進行染髮護理，了解PPD染髮劑致癌風險與安全染髮方法 — 沐璿草本護髮中心",
-  },
-  {
-    slug: "heat-styling-hair-damage",
-    title: "吹風機、直髮夾天天用？頭髮斷裂毛躁的真正原因在這裡",
-    metaDescription:
-      "吹風機、直髮夾、捲髮棒天天用導致頭髮斷裂、毛躁、角蛋白流失？本文解析熱造型傷髮原理、直髮夾溫度設定建議、熱防護噴霧正確用法，以及草本深層修護如何幫助熱傷害髮質恢復光澤。沐璿草本護髮中心提供天然熱傷害修復療程。",
-    category: "護髮教學",
-    date: "2026-03-18",
-    readingTime: 5,
-    coverImage:
-      "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1200&q=100&sharp=20&auto=format&fit=crop",
-    coverAlt:
-      "美髮師使用捲髮棒為客人進行熱造型，展示高溫工具對毛鱗片與角蛋白的影響及正確護髮方式 — 沐璿草本護髮中心",
-  },
-  {
-    slug: "conditioner-scalp-mistakes",
-    title: "護髮素直接抹頭皮？關於這個習慣，你需要知道的事",
-    metaDescription:
-      "護髮素抹頭皮真的沒問題嗎？本文以 Q&A 解析矽靈堆積、毛囊堵塞與頭皮出油惡性循環的成因，並教你正確使用護髮素的步驟，適合油性頭皮、落髮族群必讀。",
-    category: "護髮教學",
-    date: "2026-03-05",
-    readingTime: 5,
-    coverImage: "https://muxuantw.com/blog/conditioner-scalp-mistakes.png",
-    coverAlt:
-      "護髮素正確塗抹於髮中髮尾示範，避免直接接觸頭皮導致毛孔阻塞與頭皮出油加重 — 沐璿草本護髮中心",
-  },
-  {
-    slug: "postpartum-hair-loss",
-    title: "產後落髮怎麼辦？原因解析與草本護理建議",
-    metaDescription:
-      "產後落髮的原因、持續時間與草本護理建議。沐璿草本護髮中心提供溫和天然的頭皮養護，幫助產後媽媽在安心的環境中恢復頭皮健康。",
-    category: "護髮教學",
-    date: "2026-02-20",
-    readingTime: 5,
-    coverImage:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=85&auto=format&fit=crop",
-    coverAlt:
-      "女性梳理長髮反映產後落髮困擾，透過草本頭皮護理幫助休止期脫髮後恢復髮量 — 沐璿草本護髮中心",
-  },
-  {
-    slug: "herbal-vs-chemical-dye",
-    title: "草本染髮 vs 化學染髮：您的頭皮受得了嗎？",
-    metaDescription:
-      "草本染髮 vs 化學染髮全面比較：成分安全性、對頭皮的影響、染色持久度與適合族群。沐璿草本護髮中心不含 PPD、不含 PTD，提供敏感肌友善的天然染髮選擇。",
-    category: "草本知識",
-    date: "2026-02-07",
-    readingTime: 6,
-    coverImage:
-      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1200&q=85&auto=format&fit=crop",
-    coverAlt:
-      "天然草本精油滴落於手心，象徵草本染髮無 PPD 無氨水配方對頭皮安全溫和 — 沐璿草本護髮中心",
-  },
-  {
-    slug: "scalp-oil-causes",
-    title: "頭皮老是出油？背後的 4 個真正原因",
-    metaDescription:
-      "頭皮出油的 5 大真正原因：皮脂腺過度分泌、洗髮方式錯誤、飲食油膩、壓力荷爾蒙、以及錯誤的護髮產品。沐璿草本護髮中心為您深度解析並提供天然調理建議。",
-    category: "頭皮知識",
-    date: "2026-01-26",
-    readingTime: 5,
-    coverImage: "https://muxuantw.com/blog/scalp-oil-causes.webp",
-    coverAlt:
-      "女性照鏡子審視頭髮狀態，了解頭皮出油、皮脂腺過度分泌與草本調理改善方法 — 沐璿草本護髮中心",
-  },
-  {
-    slug: "why-return-to-muxuan-plant-dye",
-    title: "做過植物染，為什麼又回到沐璿？",
-    metaDescription:
-      "做過植物染為什麼又回到沐璿？了解 15 年天然植物染服務、白髮整理與嘉義、台北天然植物染，如何從實際體驗建立信任。",
-    category: "品牌故事",
-    date: "2026-09-07",
-    readingTime: 5,
-    coverImage: "https://muxuantw.com/blog/natural-herbal-hair-color.webp",
-    coverAlt: "沐璿草本護髮中心天然植物染與頭皮護理服務體驗",
-  },
-  {
-    slug: "first-natural-plant-dye-long-term-choice",
-    title: "50歲開始出現白髮，第一次體驗天然植物染就決定長期選擇",
-    metaDescription:
-      "50 歲開始出現白髮怎麼辦？從第一次體驗天然植物染，了解自然紅棕髮色、白髮整理與嘉義、台北天然植物染服務選擇。",
-    category: "品牌故事",
-    date: "2026-09-07",
-    readingTime: 5,
-    coverImage: "https://muxuantw.com/blog/natural-herbal-hair-color.webp",
-    coverAlt: "沐璿草本護髮中心天然植物染，為白髮整理提供自然紅棕色系選擇",
-  },
-  {
-    slug: "six-natural-plant-dye-scalp-less-itchy",
-    title: "六次天然植物染後，客人說：「比較不癢了」",
-    metaDescription:
-      "化學染髮後頭皮紅腫、搔癢怎麼辦？一位白髮客人經過六次天然植物染服務後，分享「比較不癢了」，看沐璿如何重視觀察與頭皮照顧。",
-    category: "品牌故事",
-    date: "2026-09-09",
-    readingTime: 5,
-    coverImage: "https://muxuantw.com/blog/natural-herbal-hair-color.webp",
-    coverAlt: "沐璿天然植物染服務，重視白髮整理過程中的頭皮感受與持續觀察",
-  },
-];
+// Read the same article records as the rendered blog.
+const ts = (await import("typescript")).default;
+const articleSource = fs.readFileSync(path.resolve(__dirname, "../client/src/data/articles.ts"), "utf-8");
+const articleModule = ts.transpileModule(articleSource, {
+  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
+}).outputText;
+const { articles } = await import(`data:text/javascript;base64,${Buffer.from(articleModule).toString("base64")}`);
+const absoluteImage = (article) => new URL(article.coverImage || "/opengraph.jpg", "https://muxuantw.com").href;
 
 function buildJsonLd(article) {
   const url = `https://muxuantw.com/blog/${article.slug}`;
@@ -167,20 +62,25 @@ function buildJsonLd(article) {
         name: article.title,
         description: article.metaDescription,
         datePublished: article.date,
-        dateModified: article.date,
+        dateModified: article.lastUpdated ?? article.date,
         articleSection: article.category,
         inLanguage: "zh-TW",
         url,
         isPartOf: { "@id": "https://muxuantw.com/blog" },
-        author: {
-          "@type": "Person",
-          name: "沐璿護理師",
+        author: article.authorType === "Organization" ? {
+          "@type": "Organization", "@id": "https://muxuantw.com/#organization",
+          name: "沐璿草本護髮中心", url: "https://muxuantw.com/about",
+        } : {
+          "@type": "Person", name: "葉玉女", jobTitle: "創辦人",
+          url: "https://muxuantw.com/about",
           worksFor: { "@id": "https://muxuantw.com/#organization" },
         },
         publisher: { "@id": "https://muxuantw.com/#organization" },
         image: {
           "@type": "ImageObject",
-          url: article.coverImage,
+          url: absoluteImage(article),
+          width: 1200,
+          height: 630,
           description: article.coverAlt,
         },
         mainEntityOfPage: {
@@ -200,7 +100,7 @@ let count = 0;
 
 for (const article of articles) {
   const url = `https://muxuantw.com/blog/${article.slug}`;
-  const pageTitle = `${article.title} | 沐璿草本護髮部落格`;
+  const pageTitle = article.seoTitle ?? `${article.title} | 沐璿草本護髮部落格`;
 
   let html = baseHtml;
 
@@ -218,6 +118,8 @@ for (const article of articles) {
     /<link rel="canonical" href="[^"]*"/,
     `<link rel="canonical" href="${url}"`
   );
+
+  html = html.replace(/(<link rel="alternate" hreflang="[^"]+" href=")[^"]*(")/g, `$1${url}$2`);
 
   // OG tags
   html = html.replace(
@@ -238,7 +140,7 @@ for (const article of articles) {
   );
   html = html.replace(
     /<meta property="og:image" content="[^"]*"/,
-    `<meta property="og:image" content="${escape(article.coverImage)}"`
+    `<meta property="og:image" content="${escape(absoluteImage(article))}"`
   );
   html = html.replace(
     /<meta property="og:image:alt" content="[^"]*"/,
@@ -256,12 +158,12 @@ for (const article of articles) {
   );
   html = html.replace(
     /<meta name="twitter:image" content="[^"]*"/,
-    `<meta name="twitter:image" content="${escape(article.coverImage)}"`
+    `<meta name="twitter:image" content="${escape(absoluteImage(article))}"`
   );
 
   // Inject article-specific JSON-LD just before </head>
   // (the base JSON-LD with Organization/WebSite stays; this adds BlogPosting)
-  const articleJsonLd = `  <script type="application/ld+json">\n  ${buildJsonLd(article)}\n  </script>\n</head>`;
+  const articleJsonLd = `  <script id="article-jsonld" type="application/ld+json">\n  ${buildJsonLd(article)}\n  </script>\n</head>`;
   html = html.replace("</head>", articleJsonLd);
 
   // Write to dist/blog/[slug]/index.html

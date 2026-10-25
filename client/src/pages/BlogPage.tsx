@@ -61,7 +61,10 @@ const blogJsonLd = {
         "datePublished": a.date,
         "dateModified": a.lastUpdated ?? a.date,
         "description": a.metaDescription,
-        "author": {
+        "author": a.authorType === "Organization" ? {
+          "@type": "Organization", "@id": "https://muxuantw.com/#organization",
+          "name": "沐璿草本護髮中心", "url": "https://muxuantw.com/about",
+        } : {
           "@type": "Person",
           "name": "葉玉女",
           "jobTitle": "創辦人",
@@ -71,7 +74,7 @@ const blogJsonLd = {
         ...(a.coverImage ? {
           "image": {
             "@type": "ImageObject",
-            "url": a.coverImage,
+            "url": new URL(a.coverImage, "https://muxuantw.com").href,
             "description": a.coverAlt,
             "width": 1200,
             "height": 630,

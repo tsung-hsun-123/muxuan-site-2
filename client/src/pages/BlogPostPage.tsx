@@ -33,6 +33,15 @@ function isQSection(section: ArticleSection) {
   return section.type === "h2" && !!section.text?.startsWith("Q");
 }
 
+function renderInline(text: string | undefined) {
+  return text?.split(/(\[[^\]]+\]\((?:https?:\/\/|\/)[^)]+\))/g).map((part, i) => {
+    const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (!link) return part;
+    const external = /^https?:/.test(link[2]) && !link[2].startsWith("https://muxuantw.com/");
+    return <a key={i} href={link[2]} className="text-primary underline underline-offset-4 hover:text-primary/80" {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{link[1]}</a>;
+  });
+}
+
 function renderSection(section: ArticleSection, index: number) {
   switch (section.type) {
     case "h2": {
@@ -76,7 +85,7 @@ function renderSection(section: ArticleSection, index: number) {
     case "p":
       return (
         <p key={index} className="text-foreground/80 text-base leading-8 mb-4">
-          {section.text}
+          {renderInline(section.text)}
         </p>
       );
     case "ul":
@@ -88,7 +97,7 @@ function renderSection(section: ArticleSection, index: number) {
               className="flex items-start gap-3 pl-4 text-foreground/80 text-base leading-relaxed"
             >
               <span className="mt-1 text-primary shrink-0 text-sm">✦</span>
-              {item}
+              {renderInline(item)}
             </li>
           ))}
         </ul>
@@ -145,7 +154,7 @@ export default function BlogPostPage() {
     window.scrollTo({ top: 0 });
     if (article) {
       const articleUrl = `https://muxuantw.com/blog/${article.slug}`;
-      const articleTitle = `${article.title} | 沐璿草本護髮部落格`;
+      const articleTitle = article.seoTitle ?? `${article.title} | 沐璿草本護髮部落格`;
 
       document.title = articleTitle;
 
@@ -166,9 +175,15 @@ export default function BlogPostPage() {
       if (ogType) ogType.setAttribute("content", "article");
       // og:image — prefer article cover, fall back to global site image
       const globalOgImage = document.querySelector('meta[property="og:image"]')?.getAttribute("content") ?? "https://muxuantw.com/opengraph.jpg";
-      const resolvedOgImage = article.coverImage ?? globalOgImage;
+      const resolvedOgImage = new URL(article.coverImage ?? globalOgImage, "https://muxuantw.com").href;
       const ogImage = document.querySelector('meta[property="og:image"]');
       if (ogImage) ogImage.setAttribute("content", resolvedOgImage);
+
+      for (const [name, value] of [["twitter:title", articleTitle], ["twitter:description", article.metaDescription], ["twitter:image", resolvedOgImage]]) {
+        document.querySelector(`meta[name="${name}"]`)?.setAttribute("content", value);
+      }
+      document.querySelector('meta[property="og:image:alt"]')?.setAttribute("content", article.coverAlt);
+      document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((link) => link.setAttribute("href", articleUrl));
 
       // Article + BreadcrumbList JSON-LD
       const existing = document.getElementById("article-jsonld");
@@ -199,7 +214,12 @@ export default function BlogPostPage() {
             "inLanguage": "zh-TW",
             "url": `https://muxuantw.com/blog/${article.slug}`,
             "isPartOf": { "@id": "https://muxuantw.com/blog" },
-            "author": {
+            "author": article.authorType === "Organization" ? {
+              "@type": "Organization",
+              "@id": "https://muxuantw.com/#organization",
+              "name": "沐璿草本護髮中心",
+              "url": "https://muxuantw.com/about",
+            } : {
               "@type": "Person",
               "name": "葉玉女",
               "jobTitle": "創辦人",
@@ -209,7 +229,7 @@ export default function BlogPostPage() {
             "publisher": { "@id": "https://muxuantw.com/#organization" },
             "image": {
               "@type": "ImageObject",
-              "url": article.coverImage ?? globalOgImage,
+              "url": resolvedOgImage,
               "description": article.coverAlt,
               "width": 1200,
               "height": 630,
@@ -251,6 +271,12 @@ export default function BlogPostPage() {
       if (metaDesc) metaDesc.setAttribute("content", defaultDesc);
       const canonical = document.querySelector('link[rel="canonical"]');
       if (canonical) canonical.setAttribute("href", "https://muxuantw.com");
+      for (const [name, value] of [["twitter:title", "沐璿草本護髮中心｜天然草本護髮・頭皮SPA"], ["twitter:description", defaultDesc], ["twitter:image", "https://muxuantw.com/opengraph.jpg"]]) {
+        document.querySelector(`meta[name="${name}"]`)?.setAttribute("content", value);
+      }
+      document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((link) => link.setAttribute("href", "https://muxuantw.com"));
+      document.querySelector('meta[property="og:image"]')?.setAttribute("content", "https://muxuantw.com/opengraph.jpg");
+      document.querySelector('meta[property="og:image:alt"]')?.setAttribute("content", "沐璿草本護髮中心 — 天然草本護髮・頭皮SPA");
       // Restore OG tags
       const ogTitle = document.querySelector('meta[property="og:title"]');
       if (ogTitle) ogTitle.setAttribute("content", "沐璿草本護髮中心｜天然草本護髮・頭皮SPA");
@@ -399,10 +425,10 @@ export default function BlogPostPage() {
               <span className="text-primary font-bold text-sm">沐</span>
             </div>
             <div>
-              <p className="text-sm font-semibold text-foreground mb-0.5">葉玉女</p>
-              <p className="text-xs text-primary font-medium mb-1">創辦人・沐璿草本護髮中心</p>
+              <p className="text-sm font-semibold text-foreground mb-0.5">{article.authorType === "Organization" ? "沐璿草本護髮中心" : "葉玉女"}</p>
+              <p className="text-xs text-primary font-medium mb-1">{article.authorType === "Organization" ? "頭皮知識與日常養護" : "創辦人・沐璿草本護髮中心"}</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                草本護髮領域深耕16年，2011年創立沐璿護髮中心，從草本原料篩選，到無數次測試與修正，歷經一年多時間，研發出專屬的天然草本配方，協助數仟位客戶從根部改善頭皮健康。
+                {article.authorType === "Organization" ? "依據醫院與皮膚科衛教資料整理，分享頭皮清潔與日常養護知識。頭皮持續紅癢、疼痛或脫屑，請由皮膚科醫師評估。" : "草本護髮領域深耕16年，2011年創立沐璿護髮中心，從草本原料篩選，到無數次測試與修正，歷經一年多時間，研發出專屬的天然草本配方，協助數仟位客戶從根部改善頭皮健康。"}
                 <a href="/about" className="ml-1 text-primary hover:underline text-xs">了解更多</a>
               </p>
             </div>
