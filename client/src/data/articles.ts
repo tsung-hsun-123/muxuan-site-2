@@ -28,8 +28,8 @@ export const articles: Article[] = [
     "seoTitle": "頭皮乾燥還是脂漏性皮膚炎？脫屑原因與照護｜沐璿草本護髮",
     "excerpt": "黑色衣服上開始出現白屑，明明剛洗完頭，頭皮還是癢。換季時，先留意洗後是舒服、緊繃，還是刺痛，再決定要調整哪些洗護習慣。",
     "category": "頭皮知識",
-    "readingTime": 7,
-    "metaDescription": "一到秋冬就頭皮癢、頭皮屑變多，洗完還是緊繃或刺痛？了解頭皮乾燥、脂漏性皮膚炎與洗護產品刺激的差異，從洗頭頻率、去屑洗髮精到草本護理，找到適合當下狀況的照顧方式，也知道何時該看皮膚科。",
+    "readingTime": 6,
+    "metaDescription": "一到秋冬就頭皮癢、頭皮屑變多，洗完還是緊繃或刺痛？了解頭皮乾燥、脂漏性皮膚炎與洗護產品刺激的差異，從洗頭頻率、去屑洗髮精到草本護理，找到適合當下狀況的照顧方式。",
     "date": "2026-10-25",
     "lastUpdated": "2026-10-25",
     "authorType": "Organization",
@@ -166,30 +166,6 @@ export const articles: Article[] = [
       },
       {
         "type": "h2",
-        "text": "頭皮敏感時，草本產品也要看實際反應"
-      },
-      {
-        "type": "p",
-        "text": "挑選草本洗護時，除了植物成分名稱，也要留意完整配方、香味和自己的使用感受。植物來源的精油同樣可能引起過敏；DermNet 的[精油接觸性皮膚炎說明](https://dermnetnz.org/topics/allergic-contact-dermatitis-to-essential-oils)列出的常見例子，就包括茶樹精油。"
-      },
-      {
-        "type": "p",
-        "text": "如果用了會紅、癢、灼熱，就先停用。頭皮已經破皮、滲液或明顯發炎時，先到皮膚科處理，再討論後續保養。草本護理的選擇，也應建立在當下頭皮能接受的範圍內。"
-      },
-      {
-        "type": "h2",
-        "text": "什麼時候該看皮膚科？"
-      },
-      {
-        "type": "p",
-        "text": "頭皮很癢、明顯紅腫，或臉部也出現搔癢脫屑時，就值得就醫。若已依照指示使用去屑洗髮精約四週，仍沒有改善，也應請醫師確認原因；症狀嚴重時不需要等滿四週。這是 [NHS 的就醫建議](https://www.nhs.uk/conditions/Dandruff/)。"
-      },
-      {
-        "type": "p",
-        "text": "若伴隨疼痛、滲液或掉髮明顯增加，也別只當作換季現象。看診時帶上最近用的洗護產品，並說明開始不舒服的時間，能幫助醫師釐清原因。參考：[皮膚科醫師談頭皮紅癢與洗護選擇](https://www.goodskin.com.tw/article.php?act=view&no=60)。"
-      },
-      {
-        "type": "h2",
         "text": "預約頭皮護理前，可以先準備什麼？"
       },
       {
@@ -212,7 +188,7 @@ export const articles: Article[] = [
             "url": "https://www.aad.org/public/everyday-care/hair-scalp-care/scalp/dry-scalp-conditions"
           },
           {
-            "text": "NHS 的就醫建議",
+            "text": "NHS 頭皮屑衛教",
             "url": "https://www.nhs.uk/conditions/Dandruff/"
           },
           {
@@ -232,16 +208,12 @@ export const articles: Article[] = [
             "url": "https://www.aad.org/public/everyday-care/hair-scalp-care/scalp/treat-dandruff"
           },
           {
-            "text": "皮膚科醫師談頭皮紅癢與洗護選擇",
+            "text": "皮膚科醫師曾奕騰的洗護建議",
             "url": "https://www.goodskin.com.tw/article.php?act=view&no=60"
           },
           {
             "text": "美國皮膚科醫學會：脂漏性皮膚炎的診斷與治療",
             "url": "https://www.aad.org/public/diseases/a-z/seborrheic-dermatitis-treatment"
-          },
-          {
-            "text": "精油接觸性皮膚炎說明",
-            "url": "https://dermnetnz.org/topics/allergic-contact-dermatitis-to-essential-oils"
           }
         ]
       }
